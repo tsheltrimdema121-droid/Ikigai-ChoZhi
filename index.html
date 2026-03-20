@@ -644,6 +644,117 @@
             text-transform: uppercase;
         }
 
+        /* SOLUTIONS SECTION */
+        .solutions-section {
+            padding: 100px 48px;
+            background: var(--light);
+        }
+
+        .solutions-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solutions-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .solutions-inner h2 em { font-style: italic; color: var(--teal); }
+
+        .solutions-inner > p {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 32px 28px;
+            box-shadow: 0 2px 24px rgba(8,25,45,0.06);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(8,25,45,0.12);
+        }
+
+        .solution-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .solution-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #e8eef4;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .solution-icon { font-size: 28px; margin-bottom: 12px; }
+
+        .solution-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .solution-card p {
+            font-size: 13px;
+            color: #7a95ab;
+            line-height: 1.7;
+        }
+
+        .solution-card:nth-child(1) { border-top: 4px solid var(--mid); }
+        .solution-card:nth-child(2) { border-top: 4px solid var(--teal); }
+        .solution-card:nth-child(3) { border-top: 4px solid #e63946; }
+        .solution-card:nth-child(4) { border-top: 4px solid var(--gold); }
+        .solution-card:nth-child(5) { border-top: 4px solid var(--accent); }
+
+        .btn-solutions {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--teal), #1a7a6e);
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(42,157,143,0.3);
+        }
+
+        .btn-solutions:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(42,157,143,0.45);
+        }
+
         /* READINESS SECTION */
         .readiness-section {
             padding: 100px 48px;
@@ -734,6 +845,113 @@
         .btn-readiness:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 40px rgba(244,162,97,0.45);
+        }
+
+        /* REPORTS SECTION */
+        .reports-section {
+            padding: 80px 48px;
+            background: var(--navy);
+        }
+
+        .reports-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .reports-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .reports-inner h2 em { font-style: italic; color: var(--accent); }
+
+        .reports-inner > p {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .report-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .report-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+        }
+
+        .report-icon { font-size: 32px; }
+
+        .report-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .report-info p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .report-meta {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-report {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s;
+            margin-top: auto;
+        }
+
+        .btn-report:hover {
+            background: #e8935a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244,162,97,0.3);
+        }
+
+        .btn-report-teal {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+        .btn-report-teal:hover {
+            background: #228b7e;
+            box-shadow: 0 8px 24px rgba(42,157,143,0.3);
         }
 
         /* FINDINGS SECTION */
@@ -1152,8 +1370,10 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#gnh">GNH Story</a></li>
+            <li><a href="#solutions">Solutions</a></li>
             <li><a href="#readiness">Readiness</a></li>
             <li><a href="#findings">Findings</a></li>
+            <li><a href="#reports">Reports</a></li>
         </ul>
     </nav>
 
@@ -1162,12 +1382,12 @@
         <div class="hero-content">
             <div class="hero-badge">🇧🇹 Bhutan Data Scientists Pvt. Ltd — Internship 2026</div>
             <div class="hero-intro">
-                Hello, I am <strong>Kinzang Choden</strong> — a 3rd year Business Intelligence student 
+                Hi, I am <strong>Kinzang Choden</strong> — a 3rd year Business Intelligence student 
                 doing my internship at Bhutan Data Scientists Pvt. Ltd. 
                 This is my internship project exploring cryptocurrency readiness in Bhutan.
             </div>
             <h1>Cryptocurrency<br><em>Readiness</em><br>in Bhutan</h1>
-            <p class="hero-desc">A data-driven survey project examining whether Bhutanese adults are prepared to adopt cryptocurrency — aligned with Bhutan's GNH values.</p>
+            <p class="hero-desc">A data-driven survey project by <strong style="color:var(--accent)">Kinzang Choden</strong> — 3rd Year Business Intelligence Student interning at Bhutan Data Scientists Pvt. Ltd, examining whether Bhutanese adults are prepared to adopt cryptocurrency — aligned with Bhutan's GNH values.</p>
             <div class="hero-buttons">
                 <a href="#gnh" class="btn-primary">
                     🇧🇹 View GNH Story
@@ -1243,6 +1463,56 @@
         </div>
     </section>
 
+    <!-- SOLUTIONS SECTION -->
+    <section class="solutions-section" id="solutions">
+        <div class="solutions-inner">
+            <span class="section-tag" style="color:var(--teal)">💡 Recommendations</span>
+            <h2>5 Solutions to Improve<br><em>Crypto Readiness in Bhutan</em></h2>
+            <p>Based on 113 survey responses, these five targeted solutions address the real barriers identified in the data — from education gaps to scam vulnerability.</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-num">01</div>
+                    <div class="solution-icon">🎓</div>
+                    <h3>Close the Education Gap</h3>
+                    <p>Run targeted crypto literacy programs for 35-54 and 55+ age groups. Young people need digital platforms. Older generations need community workshops and face to face education in local languages.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">02</div>
+                    <div class="solution-icon">🌐</div>
+                    <h3>Fix Internet Infrastructure First</h3>
+                    <p>Poor internet is barrier number one. The government must expand reliable and affordable internet to rural and semi-urban areas before pushing crypto adoption. Connectivity is a prerequisite — not a luxury.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">03</div>
+                    <div class="solution-icon">🛡️</div>
+                    <h3>Protect Vulnerable Groups from Scams</h3>
+                    <p>The 35-44 group has the highest trust and lowest security concern — the perfect target for scammers. Launch dedicated scam awareness campaigns with simple clear messaging about red flags and how to stay safe.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">04</div>
+                    <div class="solution-icon">🏛️</div>
+                    <h3>Government Must Lead on Governance</h3>
+                    <p>People are already asking for government support. Create clear cryptocurrency regulations, establish consumer protection laws, and build a transparent framework. Strong government leadership is the single most powerful accelerator of adoption in Bhutan.</p>
+                </div>
+                <div class="solution-card solution-card-wide">
+                    <div class="solution-num">05</div>
+                    <div class="solution-icon">🤝</div>
+                    <h3>Start With Communities — Let Adoption Grow Naturally</h3>
+                    <p>The majority said Maybe — not No. These undecided people are waiting to see crypto work in real life. Encourage local shops and small businesses to accept crypto as payment. When people see their favorite restaurant using crypto safely — it becomes real, relatable and trustworthy. Change starts in communities, not government offices.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top: 48px;">
+                <button class="btn-solutions" onclick="openSolutionsModal()">
+                    💡 View Full Solutions Story
+                    <span class="arrow">→</span>
+                </button>
+                <span class="btn-note" style="display:block; margin-top:12px; color:var(--muted)">Opens interactive Tableau story — no download required</span>
+            </div>
+        </div>
+    </section>
+
     <!-- READINESS IMPROVEMENT SECTION -->
     <section class="readiness-section" id="readiness">
         <div class="readiness-inner">
@@ -1303,6 +1573,39 @@
         </div>
     </section>
 
+    <!-- REPORTS SECTION -->
+    <section class="reports-section" id="reports">
+        <div class="reports-inner">
+            <span class="section-tag" style="color:var(--muted)">📄 Documentation</span>
+            <h2>Project <em>Reports</em></h2>
+            <p>Download and read the full project documentation — business report and key findings — published as interactive HTML reports.</p>
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-icon">📋</div>
+                    <div class="report-info">
+                        <h3>Business Report</h3>
+                        <p>Full project documentation covering problem statement, methodology, GNH alignment, web integration, solutions and conclusion.</p>
+                        <span class="report-meta">10 pages · HTML Report</span>
+                    </div>
+                    <a href="BusinessReport.html" target="_blank" class="btn-report">
+                        Open Report →
+                    </a>
+                </div>
+                <div class="report-card">
+                    <div class="report-icon">🔑</div>
+                    <div class="report-info">
+                        <h3>Key Findings Report</h3>
+                        <p>Deep dive into all 7 key findings with data tables, charts interpretation and business insights for each finding.</p>
+                        <span class="report-meta">9 pages · HTML Report</span>
+                    </div>
+                    <a href="keyfindings.html" target="_blank" class="btn-report btn-report-teal">
+                        Open Report →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-logo">Druk<span>Shift</span> 🇧🇹</div>
@@ -1328,6 +1631,38 @@
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
             <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- SCAM MODAL -->
+    <div class="gnh-modal-overlay" id="scamModalOverlay" onclick="handleScamOverlayClick(event)">
+        <div class="modal" id="scamModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">🛡️ Scam Vulnerability — Who is Most at Risk?</span>
+                <button class="modal-close" onclick="closeScamModal()">✕</button>
+            </div>
+            <div class="modal-body" id="scamModalBody"></div>
+        </div>
+    </div>
+
+    <!-- SOLUTIONS MODAL -->
+    <div class="gnh-modal-overlay" id="solutionsModalOverlay" onclick="handleSolutionsOverlayClick(event)">
+        <div class="modal" id="solutionsModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">💡 5 Solutions to Improve Crypto Readiness in Bhutan</span>
+                <button class="modal-close" onclick="closeSolutionsModal()">✕</button>
+            </div>
+            <div class="modal-body" id="solutionsModalBody"></div>
         </div>
     </div>
 
@@ -1365,6 +1700,68 @@
 
     <script type="module">
         import { TableauEventType } from "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js";
+
+        // Scam Vulnerability Story
+        window.openScamModal = function() {
+            const overlay = document.getElementById('scamModalOverlay');
+            const body = document.getElementById('scamModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Story4");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeScamModal = function() {
+            const overlay = document.getElementById('scamModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleScamOverlayClick = function(e) {
+            if (e.target === document.getElementById('scamModalOverlay')) closeScamModal();
+        }
+
+        // Solutions Story
+        window.openSolutionsModal = function() {
+            const overlay = document.getElementById('solutionsModalOverlay');
+            const body = document.getElementById('solutionsModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Story4");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeSolutionsModal = function() {
+            const overlay = document.getElementById('solutionsModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleSolutionsOverlayClick = function(e) {
+            if (e.target === document.getElementById('solutionsModalOverlay')) closeSolutionsModal();
+        }
 
         // GNH Story
         window.openGNHModal = function() {
@@ -1433,6 +1830,8 @@
             if (e.key === 'Escape') {
                 closeGNHModal();
                 closeReadinessModal();
+                closeScamModal();
+                closeSolutionsModal();
             }
         });
     </script>
