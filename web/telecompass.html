@@ -1,0 +1,48 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="company.html">Company</a>
+</nav>
+ 
+<form class="quiz-form">
+    <select>
+        <option value="" disabled selected>Location</option>
+        <option value="rural">Rural</option>
+        <option value="urban">Urban</option>
+    </select>
+    <br>
+    <br>
+    <select>
+        <option value="" disabled selected>Purpose</option>
+        <option value="gaming">Gaming</option>
+        <option value="studies">Studies</option>
+        <option value="Content creator">Steamer</option>
+        <option value="Connecting">communicating and connecting</option>        
+        <option value="movies and songs">entertainment</option>
+        <option value="at home">used at home</option>
+    </select>
+    <br>
+    <br>
+    <select>
+        <option value="" disabled selected>Occupation</option>
+        <option value="Government "> Civil Servant</option>
+        <option value="Private"> Private sector employee</option>
+        <option value="Student"> Student</option>
+        <option value="Self-Employed"> Self-employed</option>
+        <option value="small business">Small business</option>
+        <option value="Home-maker"> Home-maker</option>
+    </select>
+    <br><br>
+
+    <button type="submit" onclick="recommend()">Submit</button>
+
+    <a href="index.html"><button type="button">Return</button></a>
+</form>
+
+<p id="result"></p>
+
