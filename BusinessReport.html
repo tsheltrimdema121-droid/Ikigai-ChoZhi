@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrukShift — Business Report 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #08192d;
+            --blue: #1a4a7a;
+            --mid: #2a6aad;
+            --accent: #f4a261;
+            --teal: #2a9d8f;
+            --gold: #e9c46a;
+            --red: #e63946;
+            --light: #f0f4f8;
+            --muted: #7a9bb5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #e8ecf0;
+            color: var(--navy);
+        }
+
+        /* PAGE SYSTEM */
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            background: var(--white);
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(8,25,45,0.15);
+        }
+
+        /* COVER PAGE */
+        .cover {
+            background: linear-gradient(160deg, var(--navy) 0%, var(--blue) 70%, #1e5f9e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        .cover-top {
+            padding: 60px 60px 0;
+            position: relative;
+        }
+
+        .cover-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .cover-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-logo span { color: var(--accent); }
+
+        .cover-tagline {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-main {
+            padding: 80px 60px 60px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(244,162,97,0.15);
+            border: 1px solid rgba(244,162,97,0.4);
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .cover-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .cover-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .cover-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .cover-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cover-meta-item {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .cover-meta-item strong {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .cover-bottom {
+            padding: 32px 60px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cover-bottom-text {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        .cover-accent-bar {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal));
+        }
+
+        /* CONTENT PAGES */
+        .content-page {
+            padding: 0;
+        }
+
+        .page-header {
+            background: var(--navy);
+            padding: 28px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .page-header-logo span { color: var(--accent); }
+
+        .page-header-info {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+        }
+
+        .page-accent-bar {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal));
+        }
+
+        .page-body {
+            padding: 48px 60px;
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .toc-title em { font-style: italic; color: var(--mid); }
+
+        .toc-sub {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 48px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 0.5px solid #e8eef4;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toc-item:hover { background: #f8fafc; margin: 0 -20px; padding: 14px 20px; border-radius: 8px; border-bottom: 0.5px solid transparent; }
+
+        .toc-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #dce6f0;
+            width: 48px;
+            flex-shrink: 0;
+        }
+
+        .toc-text { flex: 1; }
+
+        .toc-section { font-size: 14px; font-weight: 500; color: var(--navy); }
+        .toc-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+        .toc-dots {
+            flex: 1;
+            border-bottom: 1px dotted #c8d8e8;
+            margin: 0 16px;
+            height: 1px;
+            align-self: center;
+        }
+
+        .toc-page {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--mid);
+            width: 24px;
+            text-align: right;
+        }
+
+        /* SECTION HEADERS */
+        .section-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+            line-height: 1.15;
+        }
+
+        .section-title em { font-style: italic; color: var(--mid); }
+
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: 32px;
+            border-radius: 2px;
+        }
+
+        /* BODY TEXT */
+        .body-text {
+            font-size: 13px;
+            color: #4a6070;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .body-text strong { color: var(--navy); font-weight: 600; }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin: 28px 0;
+        }
+
+        .highlight-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .highlight-box p em { color: var(--accent); }
+
+        /* INFO CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .info-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 3px solid var(--mid);
+        }
+
+        .info-card:nth-child(2) { border-left-color: var(--teal); }
+        .info-card:nth-child(3) { border-left-color: var(--accent); }
+        .info-card:nth-child(4) { border-left-color: var(--gold); }
+
+        .info-card-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .info-card-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .info-card-desc {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* TABLE */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+
+        .data-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table th:first-child { border-radius: 8px 0 0 0; }
+        .data-table th:last-child { border-radius: 0 8px 0 0; }
+
+        .data-table td {
+            padding: 10px 14px;
+            border-bottom: 0.5px solid #e8eef4;
+            color: #4a6070;
+        }
+
+        .data-table tr:nth-child(even) td { background: #f8fafc; }
+        .data-table tr:last-child td { border-bottom: none; }
+
+        /* BULLET LIST */
+        .bullet-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .bullet-list li {
+            font-size: 13px;
+            color: #4a6070;
+            line-height: 1.7;
+            padding: 6px 0 6px 24px;
+            position: relative;
+            border-bottom: 0.5px solid #f0f4f8;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* SUB HEADING */
+        .sub-heading {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 24px 0 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e8eef4;
+        }
+
+        /* TOOLS GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .tool-item {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .tool-icon { font-size: 20px; margin-bottom: 6px; }
+        .tool-name { font-size: 12px; font-weight: 600; color: var(--navy); }
+        .tool-use { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+        /* PAGE FOOTER */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 0.5px solid #e8eef4;
+        }
+
+        .page-footer-text {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.5px;
+        }
+
+        .page-num {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--mid);
+        }
+
+        /* GNH TABLE */
+        .gnh-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .gnh-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 16px;
+            border-top: 3px solid var(--mid);
+        }
+
+        .gnh-card:nth-child(2) { border-top-color: var(--teal); }
+        .gnh-card:nth-child(3) { border-top-color: var(--accent); }
+        .gnh-card:nth-child(4) { border-top-color: var(--gold); }
+        .gnh-card:nth-child(5) { border-top-color: var(--red); }
+        .gnh-card:nth-child(6) { border-top-color: #9b5de5; }
+
+        .gnh-icon { font-size: 20px; margin-bottom: 8px; }
+        .gnh-domain { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+        .gnh-connection { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+        /* SOLUTION CARDS */
+        .solution-list { margin: 20px 0; }
+
+        .solution-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 0.5px solid #e8eef4;
+        }
+
+        .solution-num-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .solution-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .solution-content p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     PAGE 1 — COVER
+═══════════════════════════════════ -->
+<div class="page cover">
+    <div class="cover-accent-bar"></div>
+    <div class="cover-top">
+        <div class="cover-grid"></div>
+        <div class="cover-logo" style="position:relative;z-index:2;">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="cover-tagline" style="position:relative;z-index:2;">Shift Forward, Bhutan</div>
+    </div>
+
+    <div class="cover-main">
+        <div class="cover-badge">BDS Internship 2026</div>
+        <div class="cover-title">
+            Business<br><em>Report</em>
+        </div>
+        <div class="cover-subtitle">Cryptocurrency Readiness in Bhutan</div>
+        <div class="cover-divider"></div>
+        <div class="cover-meta">
+            <div class="cover-meta-item">Prepared by: <strong>Kinzang Choden</strong></div>
+            <div class="cover-meta-item">Programme: <strong>3rd Year Business Intelligence</strong></div>
+            <div class="cover-meta-item">Organisation: <strong>Bhutan Data Scientists Pvt. Ltd</strong></div>
+            <div class="cover-meta-item">Year: <strong>2026</strong></div>
+        </div>
+    </div>
+
+    <div class="cover-bottom">
+        <div class="cover-bottom-text">DRUKSHIFT · BHUTAN DATA SCIENTISTS PVT. LTD · 2026</div>
+        <div class="cover-bottom-text">CONFIDENTIAL</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 2 — TABLE OF CONTENTS
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+        <div class="toc-title">Table of <em>Contents</em></div>
+        <div class="toc-sub">Business Report — DrukShift Internship Project 2026</div>
+
+        <div class="toc-item">
+            <div class="toc-num">01</div>
+            <div class="toc-text">
+                <div class="toc-section">Executive Summary</div>
+                <div class="toc-desc">Overview of the project, objectives and core outcome</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">3</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">02</div>
+            <div class="toc-text">
+                <div class="toc-section">Business Problem</div>
+                <div class="toc-desc">Why this project was needed and who it serves</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">3</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">03</div>
+            <div class="toc-text">
+                <div class="toc-section">Project Overview</div>
+                <div class="toc-desc">Survey design, data cleaning and readiness score methodology</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">4</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">04</div>
+            <div class="toc-text">
+                <div class="toc-section">Data Visualisation</div>
+                <div class="toc-desc">12 Tableau charts built and published to Tableau Public</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">5</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">05</div>
+            <div class="toc-text">
+                <div class="toc-section">GNH Alignment</div>
+                <div class="toc-desc">Mapping crypto readiness across 6 GNH domains</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">6</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">06</div>
+            <div class="toc-text">
+                <div class="toc-section">Readiness Over Time</div>
+                <div class="toc-desc">Generational analysis using age groups as proxy for time</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">7</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">07</div>
+            <div class="toc-text">
+                <div class="toc-section">Scam Vulnerability Analysis</div>
+                <div class="toc-desc">Who is most at risk and why</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">7</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">08</div>
+            <div class="toc-text">
+                <div class="toc-section">Web Integration</div>
+                <div class="toc-desc">DrukShift website built and published on GitHub Pages</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">8</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">09</div>
+            <div class="toc-text">
+                <div class="toc-section">5 Solutions</div>
+                <div class="toc-desc">Targeted recommendations based on data findings</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">9</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">10</div>
+            <div class="toc-text">
+                <div class="toc-section">Tools and Technologies</div>
+                <div class="toc-desc">All tools used throughout the project</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">9</div>
+        </div>
+
+        <div class="toc-item">
+            <div class="toc-num">11</div>
+            <div class="toc-text">
+                <div class="toc-section">Data Limitations</div>
+                <div class="toc-desc">Honest assessment of data constraints</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">10</div>
+        </div>
+
+        <div class="toc-item" style="border-bottom:none;">
+            <div class="toc-num">12</div>
+            <div class="toc-text">
+                <div class="toc-section">Conclusion</div>
+                <div class="toc-desc">Summary and next steps</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">10</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">2</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 3 — EXECUTIVE SUMMARY + PROBLEM
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 01</span>
+        <div class="section-title">Executive <em>Summary</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">DrukShift is a survey-based data analysis project that measures cryptocurrency readiness among Bhutanese adults. Developed as part of the BDS Internship 2026 at <strong>Bhutan Data Scientists Pvt. Ltd</strong>, the project answers one critical question — <strong>are people in Bhutan actually ready to adopt cryptocurrency?</strong></p>
+
+        <p class="body-text">The project analyzed <strong>113 valid survey responses</strong> across urban, semi-urban, rural and overseas respondents. The data was cleaned using Python, visualized in Tableau with 12 interactive charts, aligned with Bhutan's GNH values, and published as a live interactive website on GitHub Pages.</p>
+
+        <div class="cards-grid">
+            <div class="info-card">
+                <div class="info-card-label">Readiness Score</div>
+                <div class="info-card-value">12.75</div>
+                <div class="info-card-desc">Average out of 16 — 80% ready</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label">Respondents</div>
+                <div class="info-card-value">113</div>
+                <div class="info-card-desc">Valid survey responses analyzed</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label">Visualizations</div>
+                <div class="info-card-value">12+</div>
+                <div class="info-card-desc">Interactive Tableau charts built</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label">Story Angles</div>
+                <div class="info-card-value">4</div>
+                <div class="info-card-desc">GNH, Readiness, Scam, Solutions</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>"Crypto readiness in Bhutan is not just a technology question — it is a <em>GNH question</em>."</p>
+        </div>
+
+        <span class="section-tag" style="margin-top:32px;">Section 02</span>
+        <div class="section-title">Business <em>Problem</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">Bhutan is moving toward digital financial growth, but no one has clearly measured whether residents are actually ready to use cryptocurrency. Without this information, businesses and the government may invest in crypto solutions that people are not prepared or confident enough to use.</p>
+
+        <p class="body-text">This project solves that by collecting real data and turning it into <strong>actionable business insights</strong> for four key stakeholders:</p>
+
+        <table class="data-table">
+            <tr>
+                <th>Stakeholder</th>
+                <th>What They Need</th>
+            </tr>
+            <tr><td>Government & Policymakers</td><td>Real public data to build practical crypto regulations</td></tr>
+            <tr><td>Banks & Financial Institutions</td><td>Understand when and how to introduce crypto products</td></tr>
+            <tr><td>Small Business Owners</td><td>Know customer readiness before accepting crypto payments</td></tr>
+            <tr><td>Smart City Developers</td><td>Plan financially inclusive digital economies from day one</td></tr>
+        </table>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">3</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 4 — PROJECT OVERVIEW
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 03</span>
+        <div class="section-title">Project <em>Overview</em></div>
+        <div class="section-divider"></div>
+
+        <div class="sub-heading">3.1 Survey Design</div>
+        <p class="body-text">A structured online survey was designed and distributed to Bhutanese adults aged 18 and above. The survey collected responses across 20 questions covering digital payment habits, crypto awareness, understanding, trust, security concerns, barriers and adoption willingness.</p>
+
+        <table class="data-table">
+            <tr><th>Item</th><th>Details</th></tr>
+            <tr><td>Total Responses Collected</td><td>115</td></tr>
+            <tr><td>Valid Responses Used</td><td>113 — 2 removed (under 18 and missing age)</td></tr>
+            <tr><td>Distribution Method</td><td>Online survey</td></tr>
+            <tr><td>Geographic Coverage</td><td>Urban, Semi-Urban, Rural and Overseas</td></tr>
+            <tr><td>Dominant Group</td><td>Urban respondents — 67% of total</td></tr>
+        </table>
+
+        <div class="sub-heading">3.2 Data Cleaning</div>
+        <p class="body-text">Raw survey data was cleaned using <strong>Python and Pandas</strong>. The process included removing invalid responses, standardizing column names, converting Likert scale responses to numerical values, and carefully reversing scale directions where strongly agree represented a positive outcome.</p>
+
+        <div class="sub-heading">3.3 Readiness Score Methodology</div>
+        <p class="body-text">A composite Readiness Score was calculated by combining four key survey questions with a maximum possible score of 16.</p>
+
+        <table class="data-table">
+            <tr><th>Question</th><th>Measures</th><th>Max Score</th></tr>
+            <tr><td>Q13 Digital Familiarity</td><td>Education and digital access</td><td>4</td></tr>
+            <tr><td>Q15 Crypto Understanding</td><td>Knowledge of cryptocurrency</td><td>4</td></tr>
+            <tr><td>Q18 Feel Ready</td><td>Personal confidence level</td><td>5</td></tr>
+            <tr><td>Q19 Would Adopt Crypto</td><td>Willingness to adopt</td><td>3</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>Overall Crypto Readiness</strong></td><td><strong>16</strong></td></tr>
+        </table>
+
+        <p class="body-text" style="margin-top:16px;">The resulting average readiness score across all 113 respondents was <strong>12.75 out of 16</strong> — equivalent to approximately <strong>80% readiness overall</strong>.</p>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">4</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 5 — VISUALISATION
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 04</span>
+        <div class="section-title">Data <em>Visualisation</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">An interactive Tableau dashboard was built with <strong>12+ visualizations</strong> covering all key dimensions of the survey data. The dashboard was published to Tableau Public and embedded on the DrukShift project website.</p>
+
+        <table class="data-table">
+            <tr><th>Sheet Name</th><th>What It Shows</th></tr>
+            <tr><td>Total Response</td><td>113 total valid respondents</td></tr>
+            <tr><td>Age Group</td><td>Respondents by age group and area</td></tr>
+            <tr><td>Area Distribution by Map</td><td>Geographic spread of respondents</td></tr>
+            <tr><td>Payment Frequency</td><td>Digital payment frequency habits</td></tr>
+            <tr><td>Crypto Awareness</td><td>Percentage who have heard of crypto</td></tr>
+            <tr><td>Crypto Understanding</td><td>Level of crypto knowledge</td></tr>
+            <tr><td>Crypto Adoption</td><td>Willingness to adopt crypto</td></tr>
+            <tr><td>Top Barriers</td><td>Main barriers to adoption</td></tr>
+            <tr><td>Support Needed</td><td>What kind of help people need</td></tr>
+            <tr><td>Readiness Score by Area</td><td>Score by age group and area</td></tr>
+            <tr><td>Bhutan Readiness</td><td>How ready Bhutan is perceived to be</td></tr>
+            <tr><td>GNH Alignment</td><td>Readiness mapped to GNH domains</td></tr>
+        </table>
+
+        <p class="body-text" style="margin-top:16px;">All charts are published at: <a href="https://public.tableau.com/views/Tableaucryptoreadiness/Story1" style="color:var(--mid);font-weight:600;">public.tableau.com/views/Tableaucryptoreadiness/Story1</a></p>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">5</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 6 — GNH ALIGNMENT
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 05</span>
+        <div class="section-title">GNH <em>Alignment</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">What makes this project uniquely Bhutanese is its alignment with <strong>Gross National Happiness values</strong>. While most countries measure crypto readiness through financial and technical indicators alone, this project maps readiness across six GNH domains — showing that cryptocurrency adoption is fundamentally a human and happiness question, not just a technology question.</p>
+
+        <div class="gnh-grid">
+            <div class="gnh-card">
+                <div class="gnh-icon">🎓</div>
+                <div class="gnh-domain">Education</div>
+                <div class="gnh-connection">Q15 — 18-24 score 3.14/4 but 55+ score only 1.83/4. Clear education gap across generations.</div>
+            </div>
+            <div class="gnh-card">
+                <div class="gnh-icon">🏠</div>
+                <div class="gnh-domain">Living Standards</div>
+                <div class="gnh-connection">Q13 — Most respondents are familiar with digital tools showing improving financial access.</div>
+            </div>
+            <div class="gnh-card">
+                <div class="gnh-icon">🧠</div>
+                <div class="gnh-domain">Psychological Wellbeing</div>
+                <div class="gnh-connection">Q10 + Q12 — 45-54 age group shows highest security concern. Fear is a real barrier.</div>
+            </div>
+            <div class="gnh-card">
+                <div class="gnh-icon">🏛️</div>
+                <div class="gnh-domain">Governance</div>
+                <div class="gnh-connection">Q17 — Training programs and government support are the most requested forms of help.</div>
+            </div>
+            <div class="gnh-card">
+                <div class="gnh-icon">🤝</div>
+                <div class="gnh-domain">Community Vitality</div>
+                <div class="gnh-connection">Q14 + Q19 — 96% aware but urban communities dominate adoption willingness.</div>
+            </div>
+            <div class="gnh-card">
+                <div class="gnh-icon">⏰</div>
+                <div class="gnh-domain">Time Use</div>
+                <div class="gnh-connection">Payment Frequency — Urban residents use digital payments most. Crypto is the natural next step.</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>"In Bhutan, any new technology must earn its place — not just by being innovative, but by being <em>good for our people</em>."</p>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">6</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 7 — READINESS + SCAM
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 06</span>
+        <div class="section-title">Readiness <em>Over Time</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">Since the survey was conducted once in 2026, age groups are used as a <strong>generational proxy</strong> for time. Younger age groups represent where Bhutan is going. Older age groups represent where it has come from. Together they tell a powerful story of how readiness evolves across generations.</p>
+
+        <table class="data-table">
+            <tr><th>Age Group</th><th>Avg Readiness Score</th><th>Interpretation</th></tr>
+            <tr><td>18-24</td><td>13.27 / 16</td><td>Above average — strong foundation</td></tr>
+            <tr><td>25-34</td><td>13.74 / 16</td><td>Highest score — peak readiness generation</td></tr>
+            <tr><td>35-44</td><td>11.57 / 16</td><td>Below average — needs targeted support</td></tr>
+            <tr><td>45-54</td><td>11.18 / 16</td><td>Below average — education gap growing</td></tr>
+            <tr><td>55+</td><td>7.83 / 16</td><td>Lowest score — urgent support needed</td></tr>
+        </table>
+
+        <span class="section-tag" style="margin-top:32px;">Section 07</span>
+        <div class="section-title">Scam <em>Vulnerability</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">High crypto awareness does not mean high crypto safety. The most dangerous situation is when someone is <strong>willing to adopt but does not understand the risks</strong>. The data identifies three groups most vulnerable to scams in Bhutan.</p>
+
+        <table class="data-table">
+            <tr><th>Group</th><th>Why Vulnerable</th><th>Risk Level</th></tr>
+            <tr><td>35-44 age group</td><td>Highest trust (4.1/5) AND lowest security concern (1.0/5)</td><td style="color:var(--red);font-weight:600;">HIGH</td></tr>
+            <tr><td>55+ age group</td><td>High trust but very low awareness of scam risks</td><td style="color:var(--red);font-weight:600;">HIGH</td></tr>
+            <tr><td>Rural communities</td><td>Zero security concern scores across most age groups</td><td style="color:var(--accent);font-weight:600;">MODERATE</td></tr>
+        </table>
+
+        <div class="highlight-box" style="margin-top:24px;">
+            <p>"Zero security concern does not mean safe — it means <em>completely unaware</em>. And unaware people are exactly who scammers target."</p>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">7</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 8 — WEB INTEGRATION
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 08</span>
+        <div class="section-title">Web <em>Integration</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">The project findings were published as a <strong>live interactive website</strong> using HTML, CSS and JavaScript. The website is hosted on GitHub Pages and publicly accessible to anyone with the link.</p>
+
+        <table class="data-table">
+            <tr><th>Feature</th><th>Details</th></tr>
+            <tr><td>Website URL</td><td>kinzang7066.github.io/Cryptocurrency_Readiness_In_Bhutan</td></tr>
+            <tr><td>Technology Used</td><td>HTML, CSS, JavaScript</td></tr>
+            <tr><td>Hosting Platform</td><td>GitHub Pages — free and publicly accessible</td></tr>
+            <tr><td>GNH Story Button</td><td>Opens dedicated GNH alignment story in full screen popup</td></tr>
+            <tr><td>Readiness Story Button</td><td>Opens readiness over time story in full screen popup</td></tr>
+            <tr><td>Solutions Section</td><td>5 solution cards with interactive Tableau story button</td></tr>
+            <tr><td>Mobile Responsive</td><td>Fully optimized for phones and tablets</td></tr>
+            <tr><td>About Section</td><td>Personal introduction and project context</td></tr>
+        </table>
+
+        <div class="sub-heading" style="margin-top:24px;">Website Structure</div>
+
+        <ul class="bullet-list">
+            <li><strong>Hero Section</strong> — Project title, personal introduction and navigation buttons</li>
+            <li><strong>Stats Bar</strong> — 113 respondents, 80% readiness, 96% awareness, 12.75 average score</li>
+            <li><strong>About Me</strong> — Internship context and project background</li>
+            <li><strong>GNH Story</strong> — Interactive Tableau story mapped to 6 GNH domains</li>
+            <li><strong>5 Solutions</strong> — Data-driven recommendations with full story button</li>
+            <li><strong>Readiness Over Time</strong> — Generational analysis story</li>
+            <li><strong>Key Findings</strong> — Four critical insight cards</li>
+            <li><strong>Footer</strong> — DrukShift branding and contact information</li>
+        </ul>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">8</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 9 — SOLUTIONS + TOOLS
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 09</span>
+        <div class="section-title">5 <em>Solutions</em></div>
+        <div class="section-divider"></div>
+
+        <div class="solution-list">
+            <div class="solution-item">
+                <div class="solution-num-box">1</div>
+                <div class="solution-content">
+                    <h4>🎓 Close the Education Gap</h4>
+                    <p>Run targeted crypto literacy programs for 35-54 and 55+ age groups through workshops and community programs in local languages.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-num-box">2</div>
+                <div class="solution-content">
+                    <h4>🌐 Fix Internet Infrastructure First</h4>
+                    <p>Expand reliable and affordable internet to rural and semi-urban areas before pushing crypto adoption. Connectivity is a prerequisite — not a luxury.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-num-box">3</div>
+                <div class="solution-content">
+                    <h4>🛡️ Protect Vulnerable Groups from Scams</h4>
+                    <p>Launch dedicated scam awareness campaigns targeting 35-44 and 55+ who have high trust but low security awareness.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-num-box">4</div>
+                <div class="solution-content">
+                    <h4>🏛️ Government Must Lead on Governance</h4>
+                    <p>Create clear cryptocurrency regulations and consumer protection laws. Strong government leadership is the most powerful accelerator of adoption in Bhutan.</p>
+                </div>
+            </div>
+            <div class="solution-item" style="border-bottom:none;">
+                <div class="solution-num-box">5</div>
+                <div class="solution-content">
+                    <h4>🤝 Start With Communities</h4>
+                    <p>Encourage local shops and small businesses to accept crypto payments. When communities see crypto working safely in real life — adoption becomes natural.</p>
+                </div>
+            </div>
+        </div>
+
+        <span class="section-tag" style="margin-top:28px;">Section 10</span>
+        <div class="section-title">Tools & <em>Technologies</em></div>
+        <div class="section-divider"></div>
+
+        <div class="tools-grid">
+            <div class="tool-item">
+                <div class="tool-icon">🐍</div>
+                <div class="tool-name">Python + Pandas</div>
+                <div class="tool-use">Data cleaning</div>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">📊</div>
+                <div class="tool-name">Tableau Public</div>
+                <div class="tool-use">Visualization</div>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🌐</div>
+                <div class="tool-name">HTML + CSS + JS</div>
+                <div class="tool-use">Website</div>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🐙</div>
+                <div class="tool-name">GitHub Pages</div>
+                <div class="tool-use">Hosting</div>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">💻</div>
+                <div class="tool-name">VS Code</div>
+                <div class="tool-use">Code editor</div>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">📝</div>
+                <div class="tool-name">Google Forms</div>
+                <div class="tool-use">Survey collection</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">9</div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE 10 — LIMITATIONS + CONCLUSION
+═══════════════════════════════════ -->
+<div class="page content-page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">CRYPTOCURRENCY READINESS IN BHUTAN · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 11</span>
+        <div class="section-title">Data <em>Limitations</em></div>
+        <div class="section-divider"></div>
+
+        <ul class="bullet-list">
+            <li>Most respondents are young (18-24) and from urban areas — rural and older voices are underrepresented</li>
+            <li>Sample size of 113 is relatively small for a country-wide conclusion</li>
+            <li>All responses are self-reported and may be influenced by misunderstanding or social desirability bias</li>
+            <li>Survey was conducted once — longitudinal data would provide stronger insights over time</li>
+            <li>Findings should be treated as a starting point for further research rather than a definitive conclusion</li>
+        </ul>
+
+        <span class="section-tag" style="margin-top:36px;">Section 12</span>
+        <div class="section-title"><em>Conclusion</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">Bhutan shows promising cryptocurrency readiness that aligns naturally with GNH values. With an average readiness score of <strong>12.75 out of 16</strong>, Bhutan is approximately <strong>80% ready</strong> for digital finance adoption. The foundation is strong — awareness is high, digital payment habits are growing, and willingness to adopt exists across all age groups.</p>
+
+        <p class="body-text">The remaining 20% is not a technology gap — it is a <strong>human gap</strong>. It represents the education gap, the infrastructure gap, the trust gap and the vulnerability gap. These are not insurmountable problems — they are solvable ones. With the right investment in education, infrastructure, regulation and community adoption, Bhutan can lead the region in responsible and GNH-aligned cryptocurrency adoption.</p>
+
+        <div class="highlight-box">
+            <p>"The question is no longer whether Bhutan is ready for crypto. The question is whether we are ready to make <em>crypto ready for Bhutan</em>."</p>
+        </div>
+
+        <div style="margin-top: 36px; padding-top: 24px; border-top: 0.5px solid #e8eef4; text-align: center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:6px;">DrukShift 🇧🇹</div>
+            <div style="font-size:11px; color:var(--muted); letter-spacing:2px;">SHIFT FORWARD, BHUTAN</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:12px;">Kinzang Choden · BDS Internship 2026 · Bhutan Data Scientists Pvt. Ltd</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · BDS INTERNSHIP 2026</div>
+        <div class="page-num">10</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrukShift — Key Findings Report 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #08192d;
+            --blue: #1a4a7a;
+            --mid: #2a6aad;
+            --accent: #f4a261;
+            --teal: #2a9d8f;
+            --gold: #e9c46a;
+            --red: #e63946;
+            --light: #f0f4f8;
+            --muted: #7a9bb5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #e8ecf0;
+            color: var(--navy);
+        }
+
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            background: var(--white);
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(8,25,45,0.15);
+        }
+
+        /* COVER */
+        .cover {
+            background: linear-gradient(160deg, #0a1f38 0%, #1a4a7a 70%, #1e6b5e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cover-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .cover-accent-bar {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--gold), var(--accent));
+        }
+
+        .cover-top {
+            padding: 60px 60px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .cover-logo span { color: var(--accent); }
+
+        .cover-tagline {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .cover-main {
+            padding: 80px 60px 60px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(42,157,143,0.2);
+            border: 1px solid rgba(42,157,143,0.5);
+            color: #5ecfbf;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .cover-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .cover-title em { font-style: italic; color: var(--gold); }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .cover-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--teal);
+            margin-bottom: 32px;
+        }
+
+        .cover-meta-item {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+        }
+
+        .cover-meta-item strong { color: var(--white); font-weight: 500; }
+
+        .cover-findings-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .preview-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+        }
+
+        .preview-pill strong {
+            display: block;
+            font-size: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .cover-bottom {
+            padding: 24px 60px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-bottom-text {
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        /* CONTENT PAGES */
+        .page-header {
+            background: var(--navy);
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .page-header-logo span { color: var(--accent); }
+        .page-header-info { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+        .page-accent-bar {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--gold), var(--accent));
+        }
+
+        .page-body { padding: 48px 60px 80px; }
+
+        /* TOC */
+        .toc-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .toc-title em { font-style: italic; color: var(--teal); }
+        .toc-sub { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 0.5px solid #e8eef4;
+        }
+
+        .toc-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #dce6f0;
+            width: 48px;
+            flex-shrink: 0;
+        }
+
+        .toc-text { flex: 1; }
+        .toc-section { font-size: 14px; font-weight: 500; color: var(--navy); }
+        .toc-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+        .toc-dots {
+            flex: 1;
+            border-bottom: 1px dotted #c8d8e8;
+            margin: 0 16px;
+            height: 1px;
+            align-self: center;
+        }
+
+        .toc-page { font-size: 13px; font-weight: 500; color: var(--mid); width: 24px; text-align: right; }
+
+        /* SECTION STYLES */
+        .section-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+            line-height: 1.15;
+        }
+
+        .section-title em { font-style: italic; color: var(--teal); }
+
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--teal);
+            margin-bottom: 32px;
+            border-radius: 2px;
+        }
+
+        .body-text {
+            font-size: 13px;
+            color: #4a6070;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .body-text strong { color: var(--navy); font-weight: 600; }
+
+        /* FINDING CARDS - BIG */
+        .finding-big {
+            background: var(--white);
+            border-radius: 14px;
+            border: 0.5px solid #e0eaf4;
+            padding: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .finding-big::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+        }
+
+        .f1::before { background: var(--mid); }
+        .f2::before { background: var(--teal); }
+        .f3::before { background: var(--red); }
+        .f4::before { background: var(--gold); }
+        .f5::before { background: var(--accent); }
+        .f6::before { background: #9b5de5; }
+        .f7::before { background: var(--teal); }
+
+        .finding-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .finding-num-big {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #e8eef4;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .finding-title-block { flex: 1; }
+
+        .finding-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .finding-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
+        .finding-body {
+            font-size: 13px;
+            color: #4a6070;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .finding-insight {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 12px;
+            color: var(--navy);
+            font-style: italic;
+            border-left: 3px solid var(--teal);
+        }
+
+        .finding-insight strong { color: var(--mid); font-style: normal; }
+
+        /* DATA HIGHLIGHT */
+        .data-row {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .data-chip {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 10px 16px;
+            text-align: center;
+        }
+
+        .data-chip-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .data-chip-label {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 3px;
+            white-space: nowrap;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .highlight-box p em { color: var(--gold); }
+
+        /* TABLE */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        .data-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 11px;
+        }
+
+        .data-table th:first-child { border-radius: 8px 0 0 0; }
+        .data-table th:last-child { border-radius: 0 8px 0 0; }
+
+        .data-table td {
+            padding: 10px 14px;
+            border-bottom: 0.5px solid #e8eef4;
+            color: #4a6070;
+        }
+
+        .data-table tr:nth-child(even) td { background: #f8fafc; }
+        .data-table tr:last-child td { border-bottom: none; }
+
+        /* SUMMARY GRID */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .summary-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .summary-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .summary-label {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* PAGE FOOTER */
+        .page-footer {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 16px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 0.5px solid #e8eef4;
+        }
+
+        .page-footer-text { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
+        .page-num { font-size: 11px; font-weight: 500; color: var(--mid); }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1 — COVER -->
+<div class="page cover">
+    <div class="cover-accent-bar"></div>
+    <div class="cover-grid"></div>
+
+    <div class="cover-top">
+        <div class="cover-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="cover-tagline">Shift Forward, Bhutan</div>
+    </div>
+
+    <div class="cover-main">
+        <div class="cover-badge">Key Findings · BDS Internship 2026</div>
+        <div class="cover-title">Key <em>Findings</em></div>
+        <div class="cover-subtitle">Cryptocurrency Readiness in Bhutan</div>
+        <div class="cover-divider"></div>
+        <div class="cover-meta-item">Prepared by: <strong>Kinzang Choden</strong></div>
+        <div class="cover-meta-item">Programme: <strong>3rd Year Business Intelligence</strong></div>
+        <div class="cover-meta-item">Organisation: <strong>Bhutan Data Scientists Pvt. Ltd</strong></div>
+        <div class="cover-meta-item">Year: <strong>2026</strong></div>
+
+        <div class="cover-findings-preview">
+            <div class="preview-pill"><strong>80%</strong>Overall Readiness</div>
+            <div class="preview-pill"><strong>96%</strong>Crypto Awareness</div>
+            <div class="preview-pill"><strong>12.75</strong>Avg Score / 16</div>
+            <div class="preview-pill"><strong>55+</strong>Most Vulnerable</div>
+            <div class="preview-pill"><strong>#1</strong>Barrier: Internet</div>
+            <div class="preview-pill"><strong>7</strong>Key Findings</div>
+        </div>
+    </div>
+
+    <div class="cover-bottom">
+        <div class="cover-bottom-text">DRUKSHIFT · BHUTAN DATA SCIENTISTS PVT. LTD · 2026</div>
+        <div class="cover-bottom-text">KEY FINDINGS REPORT</div>
+    </div>
+</div>
+
+<!-- PAGE 2 — TABLE OF CONTENTS -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="toc-title">Table of <em>Contents</em></div>
+        <div class="toc-sub">Key Findings — Cryptocurrency Readiness in Bhutan 2026</div>
+
+        <div class="toc-item">
+            <div class="toc-num">01</div>
+            <div class="toc-text">
+                <div class="toc-section">Overview</div>
+                <div class="toc-desc">Summary of survey scope and methodology</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">3</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">02</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 1 — Bhutan is 80% Ready</div>
+                <div class="toc-desc">Average readiness score of 12.75 out of 16</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">4</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">03</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 2 — High Awareness, Low Understanding</div>
+                <div class="toc-desc">96% heard of crypto but knowledge gap remains</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">4</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">04</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 3 — Internet is Barrier Number One</div>
+                <div class="toc-desc">Poor internet blocks adoption especially in rural areas</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">5</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">05</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 4 — Age Predicts Readiness More Than Location</div>
+                <div class="toc-desc">Generational divide stronger than geographic divide</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">6</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">06</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 5 — Semi-Urban Middle-Aged Groups Lead</div>
+                <div class="toc-desc">35-54 Semi-Urban respondents score highest at 15/16</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">7</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">07</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 6 — Trust is High But Security Awareness is Low</div>
+                <div class="toc-desc">35-44 most vulnerable — high trust, lowest concern</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">8</div>
+        </div>
+        <div class="toc-item" style="border-bottom:none;">
+            <div class="toc-num">08</div>
+            <div class="toc-text">
+                <div class="toc-section">Finding 7 — Majority Are Willing to Adopt</div>
+                <div class="toc-desc">Maybe is not No — the community is open and waiting</div>
+            </div>
+            <div class="toc-dots"></div>
+            <div class="toc-page">9</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">2</div>
+    </div>
+</div>
+
+<!-- PAGE 3 — OVERVIEW -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <span class="section-tag">Section 01</span>
+        <div class="section-title"><em>Overview</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">This report documents the key findings from a survey-based data analysis project measuring cryptocurrency readiness among Bhutanese adults. The project was developed as part of the <strong>BDS Internship 2026</strong> at Bhutan Data Scientists Pvt. Ltd under the DrukShift initiative.</p>
+
+        <p class="body-text">The findings presented here are drawn from <strong>113 valid survey responses</strong> collected across urban, semi-urban, rural and overseas Bhutanese adults. The data was cleaned using Python, analyzed through statistical exploration and visualized using Tableau.</p>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-val">113</div>
+                <div class="summary-label">Valid Responses</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">20</div>
+                <div class="summary-label">Survey Questions</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">4</div>
+                <div class="summary-label">Areas Covered</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">5</div>
+                <div class="summary-label">Age Groups</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">16</div>
+                <div class="summary-label">Max Readiness Score</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">7</div>
+                <div class="summary-label">Key Findings</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>"These findings do not just measure financial readiness — they measure <em>human readiness</em>. In Bhutan that distinction matters deeply."</p>
+        </div>
+
+        <p class="body-text" style="margin-top:20px;">The seven findings in this report cover overall readiness, awareness and understanding gaps, barriers to adoption, generational and geographic patterns, vulnerability to scams and willingness to adopt. Each finding is supported by specific data points and includes a practical insight for decision makers.</p>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">3</div>
+    </div>
+</div>
+
+<!-- PAGE 4 — FINDINGS 1 + 2 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f1">
+            <div class="finding-header">
+                <div class="finding-num-big">01</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding One</div>
+                    <div class="finding-title">Bhutan is 80% Ready for Cryptocurrency</div>
+                </div>
+            </div>
+            <p class="finding-body">The average readiness score across all 113 respondents was <strong>12.75 out of 16</strong> — equivalent to approximately 80% readiness overall. This is calculated from four survey dimensions — digital familiarity, crypto understanding, personal confidence and willingness to adopt. The score indicates that Bhutan has a strong foundational readiness for cryptocurrency adoption. The majority of respondents already use digital payments, have heard of cryptocurrency and express willingness to adopt with the right support in place.</p>
+            <div class="data-row">
+                <div class="data-chip"><div class="data-chip-val">12.75</div><div class="data-chip-label">Average Score</div></div>
+                <div class="data-chip"><div class="data-chip-val">80%</div><div class="data-chip-label">Readiness Level</div></div>
+                <div class="data-chip"><div class="data-chip-val">16</div><div class="data-chip-label">Maximum Score</div></div>
+                <div class="data-chip"><div class="data-chip-val">4</div><div class="data-chip-label">Min Score Recorded</div></div>
+            </div>
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> Bhutan has the foundation for crypto adoption. The 80% readiness score gives businesses and policymakers confidence to begin planning crypto initiatives — while investing in the remaining 20% gap.
+            </div>
+        </div>
+
+        <div class="finding-big f2">
+            <div class="finding-header">
+                <div class="finding-num-big">02</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Two</div>
+                    <div class="finding-title">96% Have Heard of Crypto — But Understanding Remains Basic</div>
+                </div>
+            </div>
+            <p class="finding-body">Despite very high awareness — <strong>96% of respondents have heard of cryptocurrency</strong> — most only have basic or very little understanding of how it actually works. This critical gap between awareness and knowledge is the single biggest education opportunity in Bhutan. Knowing a word is not the same as knowing a concept. And knowing a concept is not the same as being ready to use it safely.</p>
+            <div class="data-row">
+                <div class="data-chip"><div class="data-chip-val">96%</div><div class="data-chip-label">Heard of Crypto</div></div>
+                <div class="data-chip"><div class="data-chip-val">Basic</div><div class="data-chip-label">Avg Understanding Level</div></div>
+            </div>
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> Awareness campaigns have worked — now education programs must follow. The next phase of crypto readiness in Bhutan is moving people from "I have heard of it" to "I understand how to use it safely."
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">4</div>
+    </div>
+</div>
+
+<!-- PAGE 5 — FINDING 3 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f3">
+            <div class="finding-header">
+                <div class="finding-num-big">03</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Three</div>
+                    <div class="finding-title">Poor Internet is the Single Biggest Barrier to Adoption</div>
+                </div>
+            </div>
+            <p class="finding-body">When respondents were asked what barriers prevent them from using digital payments and cryptocurrency, <strong>poor internet connection ranked as the number one barrier</strong> — ahead of lack of knowledge, security concerns and complicated technology. This finding is especially critical for rural communities who are already underrepresented in this survey. Without reliable internet access, crypto adoption will remain an urban privilege and will widen the existing digital divide in Bhutan rather than close it.</p>
+
+            <table class="data-table" style="margin:16px 0;">
+                <tr><th>Barrier</th><th>Ranking</th><th>Impact</th></tr>
+                <tr><td>Poor Internet Connection</td><td style="font-weight:600;color:var(--red);">#1</td><td>Infrastructure prerequisite — blocks all digital finance</td></tr>
+                <tr><td>Lack of Knowledge</td><td>#2</td><td>Education gap — trainable with the right programs</td></tr>
+                <tr><td>Security Concerns</td><td>#3</td><td>Trust gap — needs awareness campaigns</td></tr>
+                <tr><td>Complicated Technology</td><td>#4</td><td>UX gap — needs simpler design</td></tr>
+            </table>
+
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> No awareness campaign, training program or crypto product launch will succeed in rural Bhutan without first solving internet connectivity. Infrastructure investment must come before all other crypto initiatives.
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>"You cannot build a digital future on <em>broken infrastructure</em>. Connectivity is not a luxury — it is a prerequisite."</p>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">5</div>
+    </div>
+</div>
+
+<!-- PAGE 6 — FINDING 4 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f4">
+            <div class="finding-header">
+                <div class="finding-num-big">04</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Four</div>
+                    <div class="finding-title">Age Predicts Readiness More Strongly Than Location</div>
+                </div>
+            </div>
+            <p class="finding-body">One of the most important analytical findings of this project is that <strong>age is a stronger predictor of crypto readiness than geographic location</strong>. This challenges the common assumption that urban residents are always more digitally advanced than their rural counterparts. While urban areas show slightly higher average scores, the difference across areas is much smaller than the difference across age groups. A 25-year-old in a rural area is significantly more ready than a 55-year-old in Thimphu.</p>
+
+            <table class="data-table">
+                <tr><th>Age Group</th><th>Avg Score / 16</th><th>Status</th></tr>
+                <tr><td>18-24</td><td>13.27</td><td style="color:var(--teal);font-weight:600;">Above Average ✓</td></tr>
+                <tr><td>25-34</td><td>13.74</td><td style="color:var(--teal);font-weight:600;">Highest ✓✓</td></tr>
+                <tr><td>35-44</td><td>11.57</td><td style="color:var(--accent);font-weight:600;">Below Average !</td></tr>
+                <tr><td>45-54</td><td>11.18</td><td style="color:var(--accent);font-weight:600;">Below Average !</td></tr>
+                <tr><td>55+</td><td>7.83</td><td style="color:var(--red);font-weight:600;">Critical Gap !!</td></tr>
+            </table>
+
+            <p class="body-text" style="margin-top:16px;">The overall survey average is <strong>12.75</strong>. Only the 18-24 and 25-34 age groups score above this average. All groups above 35 fall below. This tells a clear generational story — younger Bhutanese are driving readiness, while older generations need urgent and targeted support.</p>
+
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> Education and support programs should be designed by age group first — then by location. A one-size-fits-all approach will fail. The most impactful intervention targets the 35+ population regardless of where they live.
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">6</div>
+    </div>
+</div>
+
+<!-- PAGE 7 — FINDING 5 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f5">
+            <div class="finding-header">
+                <div class="finding-num-big">05</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Five</div>
+                    <div class="finding-title">Semi-Urban Middle-Aged Groups Score the Highest</div>
+                </div>
+            </div>
+            <p class="finding-body">A surprising finding from the readiness heatmap analysis reveals that <strong>Semi-Urban respondents aged 35-54 scored the highest readiness at 15.0 out of 16</strong> — outperforming all Urban respondents in the same age group. This directly challenges the assumption that urban areas are always more digitally advanced. Meanwhile Urban residents aged 55 and above scored the lowest at just <strong>7.8 out of 16</strong> — identifying this as the most vulnerable and underserved group in the entire survey.</p>
+
+            <table class="data-table">
+                <tr><th>Area</th><th>Age Group</th><th>Score / 16</th><th>Insight</th></tr>
+                <tr><td>Semi-Urban</td><td>35-44</td><td style="font-weight:600;color:var(--teal);">15.000</td><td>Highest in entire survey</td></tr>
+                <tr><td>Semi-Urban</td><td>45-54</td><td style="font-weight:600;color:var(--teal);">15.000</td><td>Equally highest</td></tr>
+                <tr><td>Rural</td><td>18-24</td><td style="font-weight:600;color:var(--teal);">14.000</td><td>Rural youth are very ready</td></tr>
+                <tr><td>Urban</td><td>25-34</td><td>13.727</td><td>Highest urban score</td></tr>
+                <tr><td>Urban</td><td>18-24</td><td>13.186</td><td>Strong but not the best</td></tr>
+                <tr><td>Urban</td><td>55+</td><td style="font-weight:600;color:var(--red);">7.833</td><td>Lowest in entire survey</td></tr>
+            </table>
+
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> Urban does not automatically mean more ready. Semi-urban communities are showing strong digital confidence. Crypto products and campaigns should target semi-urban areas as early adopter communities — not only capital city residents.
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">7</div>
+    </div>
+</div>
+
+<!-- PAGE 8 — FINDING 6 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f6">
+            <div class="finding-header">
+                <div class="finding-num-big">06</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Six</div>
+                    <div class="finding-title">Trust is Uniformly High — But Security Awareness Drops With Age</div>
+                </div>
+            </div>
+            <p class="finding-body">A critical vulnerability pattern emerges from the Trust vs Security Concern analysis. <strong>All age groups show uniformly high trust in digital finance</strong> — scoring between 3.94 and 4.64 out of 5. However security concern drops sharply with age. While 18-24 year olds score 2.3 out of 5 on security concern — showing healthy awareness — the 35-44 group drops to just <strong>1.0 out of 5</strong>, the lowest of all groups. This combination of high trust and low security awareness creates the perfect conditions for crypto scams.</p>
+
+            <table class="data-table">
+                <tr><th>Age Group</th><th>Trust Score /5</th><th>Security Concern /5</th><th>Vulnerability</th></tr>
+                <tr><td>18-24</td><td>3.94</td><td style="color:var(--teal);font-weight:600;">2.30</td><td>Low — most alert</td></tr>
+                <tr><td>25-34</td><td>4.00</td><td style="color:var(--teal);font-weight:600;">2.20</td><td>Low — well balanced</td></tr>
+                <tr><td>45-54</td><td>4.64</td><td style="color:var(--accent);font-weight:600;">1.60</td><td>Moderate</td></tr>
+                <tr><td>55+</td><td>4.20</td><td style="color:var(--accent);font-weight:600;">1.40</td><td>Moderate-High</td></tr>
+                <tr><td>35-44</td><td>4.14</td><td style="color:var(--red);font-weight:600;">1.00</td><td style="color:var(--red);font-weight:600;">Highest Risk</td></tr>
+            </table>
+
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> The 35-44 age group is the most dangerous combination — they trust digital systems the most but worry about security the least. Scam protection campaigns must specifically target this group before crypto adoption accelerates.
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>"Everyone in Bhutan trusts digital finance equally — but not everyone is <em>equally protected</em> from scams."</p>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">8</div>
+    </div>
+</div>
+
+<!-- PAGE 9 — FINDING 7 + CONCLUSION -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="page-header-info">KEY FINDINGS REPORT · 2026</div>
+    </div>
+    <div class="page-accent-bar"></div>
+    <div class="page-body">
+
+        <div class="finding-big f7">
+            <div class="finding-header">
+                <div class="finding-num-big">07</div>
+                <div class="finding-title-block">
+                    <div class="finding-label">Finding Seven</div>
+                    <div class="finding-title">The Majority Are Willing to Adopt — Maybe is Not No</div>
+                </div>
+            </div>
+            <p class="finding-body">When asked whether they would adopt cryptocurrency, the majority of respondents did not say No — they said <strong>Maybe</strong>. This is one of the most encouraging findings of the entire project. Maybe represents an open door. These undecided people are not against crypto — they are waiting to see it work safely in real life before they commit. The 18-24 age group shows the strongest Yes responses. The 55+ group shows the highest proportion of No. But across all groups — the Maybe responses represent a huge opportunity for targeted conversion through education, demonstration and community trust-building.</p>
+
+            <div class="data-row">
+                <div class="data-chip"><div class="data-chip-val">Yes</div><div class="data-chip-label">Willing to adopt</div></div>
+                <div class="data-chip"><div class="data-chip-val">Maybe</div><div class="data-chip-label">Open — waiting to see</div></div>
+                <div class="data-chip"><div class="data-chip-val">No</div><div class="data-chip-label">Not ready yet</div></div>
+            </div>
+
+            <div class="finding-insight">
+                <strong>Business Insight:</strong> The Maybe group is Bhutan's biggest crypto opportunity. They are not resistant — they are cautious. Show them crypto working safely in their community and they will adopt. Start with small businesses and local shops as proof of concept.
+            </div>
+        </div>
+
+        <span class="section-tag" style="margin-top:28px; color:var(--teal);">Summary</span>
+        <div class="section-title">Findings <em>Summary</em></div>
+        <div class="section-divider"></div>
+
+        <p class="body-text">Bhutan is <strong>80% ready</strong> for cryptocurrency. The foundation is strong. But the remaining 20% is critical — it represents education, infrastructure, trust and community gaps that must be deliberately addressed. These seven findings provide the evidence base for action.</p>
+
+        <div class="highlight-box">
+            <p>"The question is no longer whether Bhutan is ready for crypto. The question is whether we are ready to make <em>crypto ready for Bhutan</em>."</p>
+        </div>
+
+        <div style="margin-top:32px; padding-top:24px; border-top:0.5px solid #e8eef4; text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:6px;">DrukShift 🇧🇹</div>
+            <div style="font-size:11px; color:var(--muted); letter-spacing:2px;">SHIFT FORWARD, BHUTAN</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:12px;">Kinzang Choden · BDS Internship 2026 · Bhutan Data Scientists Pvt. Ltd</div>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-text">DRUKSHIFT · KEY FINDINGS REPORT · 2026</div>
+        <div class="page-num">9</div>
+    </div>
+</div>
+
+</body>
+</html>
