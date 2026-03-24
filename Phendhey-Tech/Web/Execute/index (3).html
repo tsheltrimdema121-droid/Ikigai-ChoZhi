@@ -11,32 +11,23 @@
   <!-- ══ NAME SCREEN ══ -->
   <div id="name-screen">
     <div class="name-card">
-
       <span class="name-icon">👋</span>
-      <h1>Welcome</h1>
+      <h1>Welcome 🤗</h1>
       <p>Before we begin, please enter your name.</p>
 
-      <input
-        class="name-input"
-        type="text"
-        id="inp-name"
-        placeholder="Your name"
-        maxlength="40"
-        autocomplete="off"
-      >
-
+      <input class="name-input" type="text" id="inp-name" placeholder="Your name">
       <button class="name-btn" onclick="submitName()">Continue →</button>
 
-      <div class="name-error" id="name-error">Please enter your name to continue.</div>
+      <div class="name-error" id="name-error">
+        Please enter your name to continue.
+      </div>
 
       <div class="name-footer">
         Bhutan Lifestyle &amp; Wellbeing Study · 2026<br>
-        Gedu College of Business Studies · Bhutan Data Scientists Pvt. Ltd.
+        Gedu College of Business Studies · Data Scientists Pvt. Ltd.
       </div>
-
     </div>
   </div>
-
 
   <!-- ══ OVERVIEW SCREEN ══ -->
   <div id="overview-screen">
@@ -45,37 +36,36 @@
     <nav class="ov-nav">
       <div class="ov-brand">Bhutan <span>Lifestyle</span> Study</div>
       <div class="ov-right">
-        <span class="ov-user-name" id="nav-name"></span>
-        <button class="signout-btn" onclick="doSignOut()">Sign out</button>
+        <span id="nav-name"></span>
+        <button onclick="doSignOut()">Sign out</button>
       </div>
     </nav>
 
-    <!-- Greeting bar -->
-    <div class="greeting-bar" id="greeting-bar">
-      Hello, <span class="g-name" id="greeting-name"></span>. Welcome to the Bhutan Lifestyle &amp; Wellbeing Research project.
+    <!-- Greeting -->
+    <div class="greeting-bar">
+      Hello, <span id="greeting-name"></span>. Welcome to the Bhutan Lifestyle &amp; Wellbeing project.
     </div>
 
-    <!-- Main content -->
+    <!-- MAIN CONTENT -->
     <div class="ov-main">
+      <div class="ov-content">
 
-      <!-- Left: bio -->
-      <div>
         <div class="ov-eyebrow">Project Overview</div>
+
         <h1 class="ov-title">
           Urban–Rural <em>Lifestyle</em><br>Differences in Bhutan
         </h1>
+
         <div class="ov-divider"></div>
 
         <p class="ov-bio">
           I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
           at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
-          I created this project to examine how daily routines such as sleep, work, and screen use
-          differ between urban and rural residents in Bhutan and how these differences influence
-          sleep quality and daytime energy. Using these insights, I aim to develop evidence-based
-          tools, like a website and mobile app, to help individuals and communities improve their
-          daily habits and overall wellbeing.
+          This project examines how sleep, work, and screen habits differ between urban and rural
+          residents and how these affect sleep quality and energy levels.
         </p>
 
+        <!-- STATS -->
         <div class="ov-stats">
           <div class="ov-stat">
             <span class="ov-stat-num">366</span>
@@ -91,92 +81,73 @@
           </div>
           <div class="ov-stat">
             <span class="ov-stat-num">2026</span>
-            <span class="ov-stat-lbl">Study Year</span>
+            <span class="ov-stat-lbl">Study Year</span> <br>
           </div>
+        </div> <br> 
+
+        <!-- KEY FINDINGS TABLE -->
+        <div class="ov-table-box">
+          <table class="ov-table">
+
+            <!-- MERGED TITLE -->
+            <thead>
+              <tr>
+                <th colspan="2" class="ov-table-title">
+                  Overview of the Key Findings<br>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+
+            <!-- TABLE CONTENT -->
+            <tbody>
+              <tr>
+                <td class="td-num">1</td>
+                <td>Respondent Distribution</td>
+              </tr>
+              <tr>
+                <td class="td-num">2</td>
+                <td>Core Insights</td>
+              </tr>
+              <tr>
+                <td class="td-num">3</td>
+                <td>Correlation Insights</td>
+              </tr>
+              <tr>
+                <td class="td-num">4</td>
+                <td>Habits Affecting Sleep Quality</td>
+              </tr>
+              <tr>
+                <td class="td-num">5</td>
+                <td>Preferences for Sleep Support Tools</td>
+              </tr>
+              <tr>
+                <td class="td-num">6</td>
+                <td>Future Interest in Sleep Tools</td>
+              </tr>
+              <tr>
+                <td class="td-num">7</td>
+                <td>Key Takeaways</td>
+              </tr>
+            </tbody>
+
+          </table>
         </div>
-      </div>
 
-      <!-- Right: glance card -->
-      <div class="ov-card">
-        <div class="ov-card-header">Study at a Glance</div>
-        <div class="ov-card-body">
+      </div> <!-- /.ov-content -->
+    </div> <!-- /.ov-main -->
 
-          <div class="ov-metric">
-            <span class="ov-metric-label">Sleep Duration</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">~7 hrs avg</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:76%; background:var(--accent);"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ov-metric">
-            <span class="ov-metric-label">Screen Before Bed</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">Top risk factor</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:88%; background:#C0392B;"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ov-metric">
-            <span class="ov-metric-label">Work Hours Impact</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">Minimal effect</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:22%; background:var(--muted);"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ov-metric">
-            <span class="ov-metric-label">Urban Work Type</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">Mental / Mixed</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:65%; background:var(--sky);"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ov-metric">
-            <span class="ov-metric-label">Rural Work Type</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">Physical</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:55%; background:var(--green-lt);"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ov-metric">
-            <span class="ov-metric-label">App Interest</span>
-            <div class="ov-metric-right">
-              <span class="ov-metric-val">High demand</span>
-              <div class="ov-bar-wrap">
-                <div class="ov-bar" style="width:92%; background:var(--accent-lt);"></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div><!-- /.ov-main -->
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="ov-footer">
       <div class="ov-footer-badges">
-        <span class="ov-badge">Gedu College of Business Studies</span>
-        <span class="ov-badge">Data Scientists Pvt. Ltd.</span>
-        <span class="ov-badge">Bhutan · Sleep &amp; Lifestyle Research</span>
+        <span>Gedu College of Business Studies</span>
+        <span>Data Scientists Pvt. Ltd.</span>
+        <span>Bhutan · Sleep &amp; Lifestyle Research</span>
       </div>
       <div class="ov-footer-year">2026</div>
     </footer>
 
-  </div><!-- /#overview-screen -->
+  </div> <!-- /#overview-screen -->
 
   <script src="script.js"></script>
 </body>

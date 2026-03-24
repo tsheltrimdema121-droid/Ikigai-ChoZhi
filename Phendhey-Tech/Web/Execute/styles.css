@@ -22,6 +22,18 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+#overview-screen .ov-main {
+    max-width: auto;
+    margin: 0 auto;       /* centers the container horizontally */
+    padding: auto;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: start;
+    justify-content: center; /* centers grid content horizontally */
+    text-align: center;      /* centers text inside the container */
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--page);
@@ -34,7 +46,7 @@ body {
 /* subtle top border accent */
 body::before {
   content: '';
-  position: fixed;
+  position: center;
   top: 0; left: 0; right: 0;
   height: 3px;
   z-index: 200;
@@ -399,4 +411,48 @@ body::before {
 @media (max-width: 480px) {
   .name-card { padding: 44px 28px 40px; }
   .ov-stats  { gap: 8px; }
+}
+
+/* ── TABLE STYLING ── */
+.ov-table-box {
+  margin-top: 36px;
+  overflow-x: auto; /* horizontal scroll on small screens */
+}
+
+.ov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Outfit', sans-serif; /* consistent font for table */
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.ov-table th,
+.ov-table td {
+  border: 1px solid var(--border); /* visible border lines */
+  padding: 12px 16px;
+}
+
+.ov-table-title {
+  font-family: 'Playfair Display', serif; /* heading font */
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border); /* border around title row */
+}
+
+.ov-table-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.td-num {
+  width: 32px;
+  font-weight: 500;
+  color: var(--accent);
 }
