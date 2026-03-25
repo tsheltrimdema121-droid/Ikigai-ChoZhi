@@ -11,138 +11,456 @@
   <!-- ══ NAME SCREEN ══ -->
   <div id="name-screen">
     <div class="name-card">
-
       <span class="name-icon">👋</span>
       <h1>Welcome</h1>
       <p>Before we begin, please enter your name.</p>
-
       <input class="name-input" type="text" id="inp-name"
         placeholder="Your name" maxlength="40" autocomplete="off">
-
       <button class="name-btn" onclick="submitName()">Continue →</button>
-
       <div class="name-error" id="name-error">Please enter your name to continue.</div>
-
       <div class="name-footer">
         Bhutan Lifestyle &amp; Wellbeing Study · 2026<br>
         Gedu College of Business Studies · Data Scientists Pvt. Ltd.
       </div>
-
     </div>
   </div>
 
-  <!-- ══ OVERVIEW SCREEN ══ -->
-  <div id="overview-screen">
+  <!-- ══ MAIN APP ══ -->
+  <div id="app-screen">
 
-    <!-- Nav -->
-    <nav class="ov-nav">
-      <div class="ov-brand">Bhutan Lifestyle Study</div>
-      <div class="ov-right">
-        <span class="ov-user-name" id="nav-name"></span>
-        <button class="signout-btn" onclick="doSignOut()">Sign out</button>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-mark">BLS</div>
+          <div class="sidebar-logo-text">Bhutan Lifestyle<br>Study</div>
+        </div>
+        <div class="sidebar-user" id="sidebar-user">
+          <div class="sidebar-avatar" id="sidebar-avatar">?</div>
+          <div class="sidebar-username" id="sidebar-username"></div>
+        </div>
       </div>
-    </nav>
 
-    <!-- Greeting bar -->
-    <div class="greeting-bar" id="greeting-bar">
-      Hello, <span class="g-name" id="greeting-name"></span>. Welcome to the Bhutan Lifestyle &amp; Wellbeing project.
-    </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-page="home" onclick="navigateTo('home', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <span>Home</span>
+        </button>
+        <button class="nav-item" data-page="about" onclick="navigateTo('about', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </span>
+          <span>About</span>
+        </button>
+        <button class="nav-item" data-page="findings" onclick="navigateTo('findings', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
+          <span>Findings</span>
+        </button>
+        <button class="nav-item" data-page="market" onclick="navigateTo('market', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </span>
+          <span>Market Readiness</span>
+        </button>
+        <button class="nav-item" data-page="tableau" onclick="navigateTo('tableau', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </span>
+          <span>Tableau Story</span>
+        </button>
+        <button class="nav-item" data-page="report" onclick="navigateTo('report', this)">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </span>
+          <span>Report</span>
+        </button>
+      </nav>
 
-    <!-- Main content -->
-    <div class="ov-main">
-      <div class="ov-content">
+      <div class="sidebar-bottom">
+        <button class="signout-btn" onclick="doSignOut()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign out
+        </button>
+        <div class="sidebar-footer-text">Gedu College of Business Studies<br>Data Scientists Pvt. Ltd. · 2026</div>
+      </div>
+    </aside>
 
-        <div class="ov-eyebrow">Project Overview</div>
+    <!-- Main content area -->
+    <main class="main-content" id="main-content">
 
-        <h1 class="ov-title">
-          Urban–Rural <em>Lifestyle</em> Differences in Bhutan
-        </h1>
+      <!-- Greeting bar -->
+      <div class="greeting-bar" id="greeting-bar">
+        <span id="greeting-text"></span>
+      </div>
 
-        <div class="ov-divider"></div>
+      <!-- ── PAGE: HOME ── -->
+      <div class="page active" id="page-home">
+        <div class="page-inner">
+          <div class="page-eyebrow">Project Overview</div>
+          <h1 class="page-title">Urban–Rural <em>Lifestyle</em> Differences in Bhutan</h1>
+          <div class="page-divider"></div>
+          <p class="page-bio">
+            I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
+            at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
+            This project examines how sleep, work, and screen habits differ between urban and rural
+            residents and how these affect sleep quality and energy levels.
+          </p>
 
-        <p class="ov-bio">
-          I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
-          at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
-          This project examines how sleep, work, and screen habits differ between urban and rural
-          residents and how these affect sleep quality and energy levels.
-        </p>
-
-        <!-- Stats -->
-        <div class="ov-stats">
-          <div class="ov-stat">
-            <span class="ov-stat-num">366</span>
-            <span class="ov-stat-lbl">Respondents</span>
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-num">366</span>
+              <span class="stat-lbl">Respondents</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">238</span>
+              <span class="stat-lbl">Urban</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">120</span>
+              <span class="stat-lbl">Rural</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">2026</span>
+              <span class="stat-lbl">Study Year</span>
+            </div>
           </div>
-          <div class="ov-stat">
-            <span class="ov-stat-num">238</span>
-            <span class="ov-stat-lbl">Urban</span>
-          </div>
-          <div class="ov-stat">
-            <span class="ov-stat-num">120</span>
-            <span class="ov-stat-lbl">Rural</span>
-          </div>
-          <div class="ov-stat">
-            <span class="ov-stat-num">2026</span>
-            <span class="ov-stat-lbl">Study Year</span>
+
+          <div class="table-box">
+            <table class="ov-table">
+              <thead>
+                <tr><th colspan="2" class="table-title">Overview of the Key Findings</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="td-num">1</td><td>Respondent Distribution</td></tr>
+                <tr><td class="td-num">2</td><td>Core Insights</td></tr>
+                <tr><td class="td-num">3</td><td>Correlation Insights</td></tr>
+                <tr><td class="td-num">4</td><td>Habits Affecting Sleep Quality</td></tr>
+                <tr><td class="td-num">5</td><td>Preferences for Sleep Support Tools</td></tr>
+                <tr><td class="td-num">6</td><td>Future Interest in Sleep Tools</td></tr>
+                <tr><td class="td-num">7</td><td>Key Takeaways</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
+      </div>
 
-        <!-- Key Findings Table -->
-        <div class="ov-table-box">
-          <table class="ov-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="ov-table-title">
-                  Overview of the Key Findings
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-num">1</td>
-                <td>Respondent Distribution</td>
-              </tr>
-              <tr>
-                <td class="td-num">2</td>
-                <td>Core Insights</td>
-              </tr>
-              <tr>
-                <td class="td-num">3</td>
-                <td>Correlation Insights</td>
-              </tr>
-              <tr>
-                <td class="td-num">4</td>
-                <td>Habits Affecting Sleep Quality</td>
-              </tr>
-              <tr>
-                <td class="td-num">5</td>
-                <td>Preferences for Sleep Support Tools</td>
-              </tr>
-              <tr>
-                <td class="td-num">6</td>
-                <td>Future Interest in Sleep Tools</td>
-              </tr>
-              <tr>
-                <td class="td-num">7</td>
-                <td>Key Takeaways</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- ── PAGE: ABOUT ── -->
+      <div class="page" id="page-about">
+        <div class="page-inner">
+          <div class="page-eyebrow">About This Project</div>
+          <h1 class="page-title">What This Study Is <em>About</em></h1>
+          <div class="page-divider"></div>
+
+          <div class="about-greeting-card" id="about-greeting-card">
+            <div class="about-greeting-icon">📖</div>
+            <p id="about-greeting-text"></p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">The Research Question</h2>
+            <p class="section-text">
+              Bhutan is undergoing rapid urbanisation. As more people move into towns and cities, 
+              their daily habits — how long they sleep, how many hours they work, how much time 
+              they spend on screens — are shifting in ways that may significantly affect their 
+              health and wellbeing. But how different are these habits between urban and rural 
+              populations? And what do those differences mean for sleep quality and energy levels?
+            </p>
+            <p class="section-text">
+              This project set out to answer exactly that.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">Who Conducted It</h2>
+            <p class="section-text">
+              This study was conducted by <strong>Sonam Peldon</strong>, an intern at Gedu College 
+              of Business Studies and data practitioner at Data Scientists Pvt. Ltd. The research 
+              combines survey data collection with statistical analysis to uncover meaningful 
+              patterns across Bhutan's urban and rural populations.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">How Data Was Collected</h2>
+            <p class="section-text">
+              A structured survey was distributed to <strong>366 respondents</strong> — 238 from 
+              urban areas and 120 from rural areas across Bhutan. Participants were asked about 
+              their sleep duration and quality, work hours, screen time habits, energy levels, 
+              and interest in sleep support tools. The data was then cleaned, analysed, and 
+              visualised to draw the insights presented in this study.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">Why It Matters</h2>
+            <p class="section-text">
+              Sleep and lifestyle health are often treated as personal issues — but when patterns 
+              emerge across entire populations, they become public health questions. Understanding 
+              how urban and rural Bhutanese residents differ in their habits is the first step 
+              toward designing tools, policies, and programmes that can genuinely improve wellbeing 
+              at scale.
+            </p>
+          </div>
+
+          <div class="info-cards-row">
+            <div class="info-card">
+              <div class="info-card-num">366</div>
+              <div class="info-card-label">Survey respondents</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-num">2</div>
+              <div class="info-card-label">Populations studied</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-num">7</div>
+              <div class="info-card-label">Key finding areas</div>
+            </div>
+          </div>
         </div>
-
       </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="ov-footer">
-      <div class="ov-footer-badges">
-        <span class="ov-badge">Gedu College of Business Studies</span>
-        <span class="ov-badge">Data Scientists Pvt. Ltd.</span>
-        <span class="ov-badge">Bhutan · Sleep &amp; Lifestyle Research</span>
+      <!-- ── PAGE: FINDINGS ── -->
+      <div class="page" id="page-findings">
+        <div class="page-inner">
+          <div class="page-eyebrow">Key Findings</div>
+          <h1 class="page-title">What the <em>Data</em> Revealed</h1>
+          <div class="page-divider"></div>
+
+          <div class="about-greeting-card" id="findings-greeting-card">
+            <div class="about-greeting-icon">📊</div>
+            <p id="findings-greeting-text"></p>
+          </div>
+
+          <div class="findings-grid">
+            <div class="finding-card">
+              <div class="finding-number">01</div>
+              <h3 class="finding-title">Respondent Distribution</h3>
+              <p class="finding-text">238 urban respondents (65%) and 120 rural respondents (33%) participated, with 8 unclassified. This urban majority reflects Bhutan's growing urbanisation trend.</p>
+            </div>
+            <div class="finding-card">
+              <div class="finding-number">02</div>
+              <h3 class="finding-title">Core Insights</h3>
+              <p class="finding-text">Urban residents reported shorter sleep durations and higher screen time compared to rural counterparts. Rural residents showed more consistent sleep schedules tied to natural light cycles.</p>
+            </div>
+            <div class="finding-card">
+              <div class="finding-number">03</div>
+              <h3 class="finding-title">Correlation Insights</h3>
+              <p class="finding-text">Strong correlation found between screen time before bed and reduced sleep quality. Work hours beyond 8 per day were associated with lower energy levels the following morning.</p>
+            </div>
+            <div class="finding-card">
+              <div class="finding-number">04</div>
+              <h3 class="finding-title">Habits Affecting Sleep Quality</h3>
+              <p class="finding-text">Late-night screen use, irregular bedtime routines, and high caffeine consumption were the top three habits negatively impacting sleep quality across both groups.</p>
+            </div>
+            <div class="finding-card">
+              <div class="finding-number">05</div>
+              <h3 class="finding-title">Preferences for Sleep Support Tools</h3>
+              <p class="finding-text">Sleep tracking apps were the most preferred tool, favoured for their convenience and low cost. Respondents prioritised simple, phone-based solutions over complex wearables.</p>
+            </div>
+            <div class="finding-card">
+              <div class="finding-number">06</div>
+              <h3 class="finding-title">Future Interest in Sleep Tools</h3>
+              <p class="finding-text">58.42% said they would use a wellness app, 36.6% said maybe, and only 4.96% said no — indicating over 95% are open to some form of digital sleep support.</p>
+            </div>
+          </div>
+
+          <div class="finding-card finding-card--wide">
+            <div class="finding-number">07</div>
+            <h3 class="finding-title">Key Takeaways</h3>
+            <p class="finding-text">Urban–rural differences in Bhutan are real and measurable. Lifestyle habits significantly affect sleep quality and energy. The population is ready for digital wellness tools — particularly simple, affordable, phone-based apps. Awareness and access remain the key barriers to adoption, especially in rural areas.</p>
+          </div>
+        </div>
       </div>
-      <div class="ov-footer-year">2026</div>
-    </footer>
 
+      <!-- ── PAGE: MARKET READINESS ── -->
+      <div class="page" id="page-market">
+        <div class="page-inner">
+          <div class="page-eyebrow">Market Readiness</div>
+          <h1 class="page-title">Is Bhutan Ready for <em>Wellness Tools?</em></h1>
+          <div class="page-divider"></div>
+
+          <div class="about-greeting-card" id="market-greeting-card">
+            <div class="about-greeting-icon">📱</div>
+            <p id="market-greeting-text"></p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">So, is there a market?</h2>
+            <p class="section-text">
+              Absolutely — and the numbers make a strong case.
+            </p>
+            <p class="section-text">
+              When respondents were asked whether they would use a sleep or wellness app if one 
+              were available, <strong>58.42% said yes outright</strong>. Another <strong>36.6% 
+              said maybe</strong> — meaning they're not opposed, just not fully decided yet. 
+              Only <strong>4.96% said no</strong>.
+            </p>
+            <p class="section-text">
+              Put together, that's over <strong>95% of 366 respondents</strong> who are either 
+              open to or actively interested in a wellness app. For a market where digital health 
+              tools are still finding their footing, that's a remarkable signal.
+            </p>
+          </div>
+
+          <!-- App interest chart bars -->
+          <div class="market-bars">
+            <div class="market-bar-row">
+              <div class="market-bar-label">Yes</div>
+              <div class="market-bar-track">
+                <div class="market-bar-fill market-bar--yes" style="width:58.42%"></div>
+              </div>
+              <div class="market-bar-pct">58.42%</div>
+            </div>
+            <div class="market-bar-row">
+              <div class="market-bar-label">Maybe</div>
+              <div class="market-bar-track">
+                <div class="market-bar-fill market-bar--maybe" style="width:36.6%"></div>
+              </div>
+              <div class="market-bar-pct">36.6%</div>
+            </div>
+            <div class="market-bar-row">
+              <div class="market-bar-label">No</div>
+              <div class="market-bar-track">
+                <div class="market-bar-fill market-bar--no" style="width:4.96%"></div>
+              </div>
+              <div class="market-bar-pct">4.96%</div>
+            </div>
+          </div>
+          <p class="market-bar-caption">Would you use a sleep/wellness app? — 366 respondents</p>
+
+          <div class="content-section">
+            <h2 class="section-heading">How to read the "maybe" group</h2>
+            <p class="section-text">
+              The 36.6% who said "maybe" are arguably the most interesting segment. They're not 
+              skeptics — they're undecided. That usually comes down to three things: not knowing 
+              enough about what the tool does, uncertainty about cost, or simply never having 
+              thought about sleep as something worth tracking.
+            </p>
+            <p class="section-text">
+              That's not resistance. That's an awareness and education gap — and those are very solvable.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">What tool do people actually want?</h2>
+            <p class="section-text">
+              Out of all the options presented, respondents pointed most clearly toward one thing: 
+              a <strong>sleep tracking app</strong>.
+            </p>
+            <p class="section-text">
+              That's a telling choice. A sleep tracking app lives on a phone most people already 
+              own — no extra device to buy, no subscription to commit to, no steep learning curve. 
+              It's the lowest-barrier, highest-convenience option available. Respondents aren't 
+              asking for something complicated or expensive. They're asking for something simple 
+              that fits into the life they already have.
+            </p>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">💡</div>
+            <div>
+              <strong>Preferred tool:</strong> Sleep tracking app — chosen for convenience, 
+              low cost, and ease of use on existing smartphones.
+            </div>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">The honest picture</h2>
+            <p class="section-text">
+              There are real challenges worth acknowledging. Smartphone and internet access is 
+              still uneven across Bhutan, particularly in rural areas. Awareness of sleep health 
+              as something worth actively managing is still developing. And affordability will 
+              matter — any tool priced out of reach simply won't get used.
+            </p>
+            <p class="section-text">
+              But none of these are dealbreakers. They're design constraints — they tell 
+              developers and policymakers <em>how</em> to build and distribute these tools, 
+              not <em>whether</em> to.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="section-heading">Bottom line</h2>
+            <p class="section-text" id="market-bottom-line">
+              The data speaks clearly. With 58.42% ready to say yes and another 36.6% saying 
+              maybe, Bhutan's wellness market is early-stage but unmistakably real. People know 
+              what they want — something simple, on their phone, that helps them sleep better. 
+              The demand is there. It just needs the right product to meet it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: TABLEAU STORY ── -->
+      <div class="page" id="page-tableau">
+        <div class="page-inner">
+          <div class="page-eyebrow">Tableau Story</div>
+          <h1 class="page-title">Interactive <em>Data Visualisation</em></h1>
+          <div class="page-divider"></div>
+          <p class="section-text" style="margin-bottom:32px;">
+            The Tableau story provides an interactive, visual walkthrough of all key findings 
+            from this study. Explore the data, filter by urban or rural, and see the patterns 
+            for yourself.
+          </p>
+          <div class="tableau-placeholder">
+            <div class="tableau-inner">
+              <div class="tableau-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <p class="tableau-label">Tableau Embed</p>
+              <p class="tableau-sub">Paste your Tableau Public embed code here to display the interactive story.</p>
+              <div class="tableau-code-hint">
+                &lt;!-- Replace this block with your Tableau &lt;script&gt; embed code --&gt;
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: REPORT ── -->
+      <div class="page" id="page-report">
+        <div class="page-inner">
+          <div class="page-eyebrow">Full Report</div>
+          <h1 class="page-title">Research <em>Report</em></h1>
+          <div class="page-divider"></div>
+          <p class="section-text" style="margin-bottom:32px;">
+            The complete research report covers the methodology, data analysis, findings, 
+            and recommendations from the Bhutan Lifestyle &amp; Wellbeing Study 2026.
+          </p>
+          <div class="report-options">
+            <div class="report-card">
+              <div class="report-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <h3 class="report-card-title">Full PDF Report</h3>
+              <p class="report-card-desc">Download the complete research report including all charts, analysis, and references.</p>
+              <button class="report-btn" onclick="alert('Link your PDF here')">Download PDF →</button>
+            </div>
+            <div class="report-card">
+              <div class="report-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <h3 class="report-card-title">Executive Summary</h3>
+              <p class="report-card-desc">A concise two-page overview of the most important findings and recommendations.</p>
+              <button class="report-btn" onclick="alert('Link your summary here')">Download Summary →</button>
+            </div>
+            <div class="report-card">
+              <div class="report-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <h3 class="report-card-title">Raw Dataset</h3>
+              <p class="report-card-desc">Access the anonymised survey dataset used in this study for independent analysis.</p>
+              <button class="report-btn" onclick="alert('Link your dataset here')">Access Dataset →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
   </div>
 
   <script src="script.js"></script>

@@ -2,36 +2,32 @@
 
 let visitorName = '';
 
-// Paste your Apps Script Web App URL here
+// ── Google Sheets logging ──────────────────────────────────────────────────
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbys3-Yefk8RbNEMZFzBJ9xupG4WMWhitYAw1EfoJnQwDEI-miDb9jNC2bthJtGbLGib2A/exec';
 
-/**
- * Silently logs the visitor's name and timestamp to Google Sheets.
- * Fails gracefully — never blocks the user flow.
- */
 function logVisitor(name) {
   if (!SHEET_URL || SHEET_URL === 'YOUR_APPS_SCRIPT_URL') return;
-
   const now = new Date().toLocaleString('en-GB', {
-    day:    '2-digit',
-    month:  'short',
-    year:   'numeric',
-    hour:   '2-digit',
-    minute: '2-digit',
-    hour12: true,
+    day: '2-digit', month: 'short', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', hour12: true,
   });
-
   fetch(SHEET_URL, {
-    method:  'POST',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ name, time: now }),
-    mode:    'no-cors',
-  }).catch(() => {}); // silent — never blocks the user
+    body: JSON.stringify({ name, time: now }),
+    mode: 'no-cors',
+  }).catch(() => {});
 }
 
-/**
- * Validates the name input, logs the visit, and transitions to the overview screen.
- */
+// ── Greeting helper ────────────────────────────────────────────────────────
+function getGreeting() {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 17) return 'Good afternoon';
+  return 'Good evening';
+}
+
+// ── Name submission ────────────────────────────────────────────────────────
 function submitName() {
   const input = document.getElementById('inp-name');
   const err   = document.getElementById('name-error');
@@ -39,46 +35,158 @@ function submitName() {
 
   if (!name) {
     err.style.display = 'block';
+    input.focus();
     return;
   }
 
   err.style.display = 'none';
   visitorName = name;
-
   logVisitor(name);
 
-  document.getElementById('name-screen').style.display     = 'none';
-  document.getElementById('overview-screen').style.display = 'block';
-  document.getElementById('nav-name').textContent          = name;
-  document.getElementById('greeting-name').textContent     = name;
+  // Set avatar (first letter)
+  const avatar = document.getElementById('sidebar-avatar');
+  avatar.textContent = name.charAt(0).toUpperCase();
 
+  // Set username in sidebar
+  document.getElementById('sidebar-username').textContent = name;
+
+  // Personalised greetings for page cards
+  const greet = getGreeting();
+  setGreetingCards(name, greet);
+
+  // Show greeting bar
   const bar = document.getElementById('greeting-bar');
-  bar.style.display    = 'block';
-  bar.style.opacity    = '0';
-  bar.style.transition = 'opacity 0.35s ease';
-  setTimeout(() => { bar.style.opacity = '1'; }, 60);
+  document.getElementById('greeting-text').innerHTML =
+    `${greet}, <strong>${name}</strong> — welcome to the Bhutan Lifestyle &amp; Wellbeing Study 2026.`;
+
+  // Transition screens
+  document.getElementById('name-screen').style.display = 'none';
+
+  const appScreen = document.getElementById('app-screen');
+  appScreen.classList.add('visible');
+  appScreen.style.opacity = '0';
+  appScreen.style.transition = 'opacity 0.4s ease';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { appScreen.style.opacity = '1'; });
+  });
+
+  // Animate market bars after a short delay (they'll be visible on market page)
+  setTimeout(animateMarketBars, 600);
 
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-/**
- * Signs the user out and returns to the name screen.
- */
-function doSignOut() {
-  document.getElementById('overview-screen').style.display = 'none';
-  document.getElementById('greeting-bar').style.display    = 'none';
-  document.getElementById('name-screen').style.display     = 'flex';
-  document.getElementById('inp-name').value                = '';
-  document.getElementById('name-error').style.display      = 'none';
-  visitorName = '';
+// ── Per-page personalised greeting cards ───────────────────────────────────
+function setGreetingCards(name, greet) {
+  const cards = [
+    {
+      id: 'about-greeting-text',
+      text: `${greet}, ${name}. This section explains why this study was conducted, who carried it out, and what questions it set out to answer.`,
+    },
+    {
+      id: 'findings-greeting-text',
+      text: `${greet}, ${name}. Here's a breakdown of the seven key findings from the study — from respondent distribution to market readiness for wellness tools.`,
+    },
+    {
+      id: 'market-greeting-text',
+      text: `${greet}, ${name}. This section examines whether Bhutan has a viable market for digital wellness tools — and what the data says.`,
+    },
+  ];
+  cards.forEach(({ id, text }) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  });
 }
 
-// Allow pressing Enter on the name screen to submit
-document.addEventListener('keydown', function (e) {
-  const nameScreenVisible =
-    document.getElementById('name-screen').style.display !== 'none';
+// ── Navigation ─────────────────────────────────────────────────────────────
+function navigateTo(pageId, btn) {
+  // Deactivate all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Deactivate all nav items
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
-  if (e.key === 'Enter' && nameScreenVisible) {
+  // Activate target page
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    // Re-trigger animation
+    target.style.animation = 'none';
+    target.offsetHeight; // reflow
+    target.style.animation = '';
+  }
+
+  // Activate nav button
+  if (btn) btn.classList.add('active');
+
+  // Animate bars if navigating to market page
+  if (pageId === 'market') {
+    setTimeout(animateMarketBars, 200);
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Market bar animation ───────────────────────────────────────────────────
+let barsAnimated = false;
+
+function animateMarketBars() {
+  // Always re-animate when page is visited
+  const bars = document.querySelectorAll('.market-bar-fill');
+  bars.forEach(bar => {
+    const target = bar.getAttribute('data-target');
+    if (target) {
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.width = target + '%'; }, 50);
+    }
+  });
+}
+
+// ── Sign out ───────────────────────────────────────────────────────────────
+function doSignOut() {
+  const appScreen = document.getElementById('app-screen');
+  appScreen.style.transition = 'opacity 0.3s ease';
+  appScreen.style.opacity = '0';
+
+  setTimeout(() => {
+    appScreen.classList.remove('visible');
+    appScreen.style.opacity = '';
+    appScreen.style.transition = '';
+
+    document.getElementById('name-screen').style.display = 'flex';
+    document.getElementById('inp-name').value = '';
+    document.getElementById('name-error').style.display = 'none';
+    visitorName = '';
+
+    // Reset nav to home
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-home').classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const homeBtn = document.querySelector('[data-page="home"]');
+    if (homeBtn) homeBtn.classList.add('active');
+
+    barsAnimated = false;
+  }, 300);
+}
+
+// ── Keyboard: Enter on name screen ────────────────────────────────────────
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter') return;
+  const ns = document.getElementById('name-screen');
+  if (ns && ns.style.display !== 'none') {
     submitName();
   }
+});
+
+// ── On DOM ready: prep bar data-targets ───────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  // Store target widths as data attributes so we can re-animate
+  const fills = document.querySelectorAll('.market-bar-fill');
+  fills.forEach(fill => {
+    const inlineWidth = fill.style.width; // e.g. "58.42%"
+    if (inlineWidth) {
+      const numVal = parseFloat(inlineWidth);
+      fill.setAttribute('data-target', numVal);
+      fill.style.width = '0'; // reset; animate when page shown
+    }
+  });
 });
