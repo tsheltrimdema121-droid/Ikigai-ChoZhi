@@ -81,10 +81,6 @@
       </nav>
 
       <div class="sidebar-bottom">
-        <button class="signout-btn" onclick="doSignOut()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          Sign out
-        </button>
         <div class="sidebar-footer-text">Gedu College of Business Studies<br>Data Scientists Pvt. Ltd. · 2026</div>
       </div>
     </aside>
@@ -95,6 +91,10 @@
       <!-- Greeting bar -->
       <div class="greeting-bar" id="greeting-bar">
         <span id="greeting-text"></span>
+        <button class="greeting-bar-signout" onclick="doSignOut()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign out
+        </button>
       </div>
 
       <!-- ── PAGE: HOME ── -->
@@ -129,22 +129,7 @@
             </div>
           </div>
 
-          <div class="table-box">
-            <table class="ov-table">
-              <thead>
-                <tr><th colspan="2" class="table-title">Overview of the Key Findings</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="td-num">1</td><td>Respondent Distribution</td></tr>
-                <tr><td class="td-num">2</td><td>Core Insights</td></tr>
-                <tr><td class="td-num">3</td><td>Correlation Insights</td></tr>
-                <tr><td class="td-num">4</td><td>Habits Affecting Sleep Quality</td></tr>
-                <tr><td class="td-num">5</td><td>Preferences for Sleep Support Tools</td></tr>
-                <tr><td class="td-num">6</td><td>Future Interest in Sleep Tools</td></tr>
-                <tr><td class="td-num">7</td><td>Key Takeaways</td></tr>
-              </tbody>
-            </table>
-          </div>
+
         </div>
       </div>
 
@@ -235,40 +220,58 @@
             <p id="findings-greeting-text"></p>
           </div>
 
+          <!-- Clickable index table -->
+          <div class="table-box findings-index-box">
+            <table class="ov-table">
+              <thead>
+                <tr><th colspan="2" class="table-title">Overview of the Key Findings</th></tr>
+              </thead>
+              <tbody>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-1')"><td class="td-num">1</td><td>Respondent Distribution</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-2')"><td class="td-num">2</td><td>Core Insights</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-3')"><td class="td-num">3</td><td>Correlation Insights</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-4')"><td class="td-num">4</td><td>Habits Affecting Sleep Quality</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-5')"><td class="td-num">5</td><td>Preferences for Sleep Support Tools</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-6')"><td class="td-num">6</td><td>Future Interest in Sleep Tools</td></tr>
+                <tr class="findings-index-row" onclick="scrollToFinding('finding-7')"><td class="td-num">7</td><td>Key Takeaways</td></tr>
+              </tbody>
+            </table>
+          </div>
+
           <div class="findings-grid">
-            <div class="finding-card">
+            <div class="finding-card" id="finding-1">
               <div class="finding-number">01</div>
               <h3 class="finding-title">Respondent Distribution</h3>
               <p class="finding-text">238 urban respondents (65%) and 120 rural respondents (33%) participated, with 8 unclassified. This urban majority reflects Bhutan's growing urbanisation trend.</p>
             </div>
-            <div class="finding-card">
+            <div class="finding-card" id="finding-2">
               <div class="finding-number">02</div>
               <h3 class="finding-title">Core Insights</h3>
               <p class="finding-text">Urban residents reported shorter sleep durations and higher screen time compared to rural counterparts. Rural residents showed more consistent sleep schedules tied to natural light cycles.</p>
             </div>
-            <div class="finding-card">
+            <div class="finding-card" id="finding-3">
               <div class="finding-number">03</div>
               <h3 class="finding-title">Correlation Insights</h3>
               <p class="finding-text">Strong correlation found between screen time before bed and reduced sleep quality. Work hours beyond 8 per day were associated with lower energy levels the following morning.</p>
             </div>
-            <div class="finding-card">
+            <div class="finding-card" id="finding-4">
               <div class="finding-number">04</div>
               <h3 class="finding-title">Habits Affecting Sleep Quality</h3>
               <p class="finding-text">Late-night screen use, irregular bedtime routines, and high caffeine consumption were the top three habits negatively impacting sleep quality across both groups.</p>
             </div>
-            <div class="finding-card">
+            <div class="finding-card" id="finding-5">
               <div class="finding-number">05</div>
               <h3 class="finding-title">Preferences for Sleep Support Tools</h3>
               <p class="finding-text">Sleep tracking apps were the most preferred tool, favoured for their convenience and low cost. Respondents prioritised simple, phone-based solutions over complex wearables.</p>
             </div>
-            <div class="finding-card">
+            <div class="finding-card" id="finding-6">
               <div class="finding-number">06</div>
               <h3 class="finding-title">Future Interest in Sleep Tools</h3>
               <p class="finding-text">58.42% said they would use a wellness app, 36.6% said maybe, and only 4.96% said no — indicating over 95% are open to some form of digital sleep support.</p>
             </div>
           </div>
 
-          <div class="finding-card finding-card--wide">
+          <div class="finding-card finding-card--wide" id="finding-7">
             <div class="finding-number">07</div>
             <h3 class="finding-title">Key Takeaways</h3>
             <p class="finding-text">Urban–rural differences in Bhutan are real and measurable. Lifestyle habits significantly affect sleep quality and energy. The population is ready for digital wellness tools — particularly simple, affordable, phone-based apps. Awareness and access remain the key barriers to adoption, especially in rural areas.</p>

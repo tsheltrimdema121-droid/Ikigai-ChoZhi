@@ -141,7 +141,22 @@ function animateMarketBars() {
   });
 }
 
-// ── Sign out ───────────────────────────────────────────────────────────────
+// ── Scroll to finding card ─────────────────────────────────────────────────
+function scrollToFinding(id) {
+  // Make sure findings page is active
+  const findingsBtn = document.querySelector('[data-page="findings"]');
+  navigateTo('findings', findingsBtn);
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.classList.add('finding-highlight');
+      setTimeout(() => el.classList.remove('finding-highlight'), 1400);
+    }
+  }, 150);
+}
+
+
 function doSignOut() {
   const appScreen = document.getElementById('app-screen');
   appScreen.style.transition = 'opacity 0.3s ease';
