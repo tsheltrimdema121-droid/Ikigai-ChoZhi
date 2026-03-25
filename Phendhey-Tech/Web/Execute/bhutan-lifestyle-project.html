@@ -1,568 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhutan Lifestyle Study</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --accent:    #C9680F;
-  --accent-lt: #F0A458;
-  --green:     #2F7A54;
-  --green-lt:  #4A9E72;
-  --sky:       #3A7CA5;
-  --page:      #FFFFFF;
-  --surface:   #F7F6F4;
-  --surface2:  #EFEDE9;
-  --border:    #E0DDD8;
-  --border2:   #D0CCC5;
-  --text:      #1A1A1A;
-  --text2:     #4A4744;
-  --muted:     #7A7570;
-  --red:       #C0392B;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-
-body {
-  font-family:'Outfit', sans-serif;
-  background:var(--page);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-  font-weight:400;
-}
-
-/* ── subtle top border accent ── */
-body::before {
-  content:'';
-  position:fixed; top:0; left:0; right:0; height:3px; z-index:200;
-  background:linear-gradient(90deg, var(--accent), var(--accent-lt), var(--green-lt));
-}
-
-/* ══════════════════════
-   NAME SCREEN
-══════════════════════ */
-#name-screen {
-  min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
-  padding:40px 20px;
-  background:var(--page);
-  position:relative;
-}
-
-/* faint decorative circle */
-#name-screen::before {
-  content:'';
-  position:absolute;
-  width:520px; height:520px; border-radius:50%;
-  background:radial-gradient(circle, rgba(201,104,15,0.05) 0%, transparent 70%);
-  top:50%; left:50%; transform:translate(-50%,-55%);
-  pointer-events:none;
-}
-
-.name-card {
-  background:var(--page);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:56px 52px 48px;
-  width:100%; max-width:420px;
-  text-align:center;
-  position:relative;
-  box-shadow:0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
-  animation:cardIn 0.45s ease both;
-}
-@keyframes cardIn {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-.name-card::before {
-  content:'';
-  position:absolute; top:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg, var(--accent), var(--accent-lt), var(--green-lt));
-  border-radius:16px 16px 0 0;
-}
-
-.name-icon {
-  font-size:2.4rem; display:block; margin-bottom:18px;
-  animation:wave 2.5s ease-in-out infinite;
-  transform-origin:70% 70%;
-}
-@keyframes wave {
-  0%,60%,100%{ transform:rotate(0deg) }
-  10%,30%    { transform:rotate(16deg) }
-  20%        { transform:rotate(-6deg) }
-  40%        { transform:rotate(12deg) }
-  50%        { transform:rotate(-4deg) }
-}
-
-.name-card h1 {
-  font-family:'Playfair Display', serif;
-  font-size:1.6rem; font-weight:700;
-  color:var(--text); margin-bottom:8px;
-}
-
-.name-card p {
-  font-size:0.88rem; color:var(--muted);
-  line-height:1.65; margin-bottom:30px;
-  font-weight:400;
-}
-
-.name-input {
-  width:100%; padding:14px 18px;
-  background:var(--surface);
-  border:1px solid var(--border2);
-  border-radius:10px;
-  color:var(--text); font-family:'Outfit', sans-serif;
-  font-size:1rem; font-weight:400;
-  text-align:center; outline:none;
-  transition:border-color 0.2s, background 0.2s;
-  margin-bottom:14px;
-}
-.name-input::placeholder { color:var(--muted); font-size:0.9rem; }
-.name-input:focus {
-  border-color:var(--accent);
-  background:var(--page);
-  box-shadow:0 0 0 3px rgba(201,104,15,0.08);
-}
-
-.name-btn {
-  width:100%; padding:13px;
-  background:var(--accent);
-  border:none; border-radius:10px;
-  color:#fff; font-family:'Outfit', sans-serif;
-  font-size:0.92rem; font-weight:600;
-  cursor:pointer; transition:all 0.2s;
-  letter-spacing:0.02em;
-}
-.name-btn:hover { background:#B35A0A; transform:translateY(-1px); box-shadow:0 4px 14px rgba(201,104,15,0.25); }
-.name-btn:active { transform:translateY(0); }
-
-.name-error {
-  font-size:0.76rem; color:var(--red);
-  margin-top:10px; display:none;
-}
-
-.name-footer {
-  margin-top:28px;
-  padding-top:20px;
-  border-top:1px solid var(--border);
-  font-size:0.72rem; color:var(--muted);
-  line-height:1.6; letter-spacing:0.02em;
-}
-
-/* ══════════════════════
-   OVERVIEW SCREEN
-══════════════════════ */
-#overview-screen {
-  display:none;
-  min-height:100vh;
-  background:var(--page);
-}
-
-/* NAV */
-.ov-nav {
-  position:fixed; top:3px; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 48px;
-  height:56px;
-  background:rgba(255,255,255,0.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
-
-.ov-brand {
-  font-family:'Playfair Display', serif;
-  font-size:0.88rem; font-weight:400;
-  color:var(--text); letter-spacing:0.04em;
-}
-
-.ov-brand span { color:var(--accent); }
-
-.ov-right {
-  display:flex; align-items:center; gap:16px;
-}
-
-.ov-user-name {
-  font-size:0.78rem; color:var(--muted); font-weight:400;
-}
-
-.signout-btn {
-  padding:6px 14px;
-  background:transparent;
-  border:1px solid var(--border2);
-  border-radius:6px;
-  color:var(--muted); font-family:'Outfit', sans-serif;
-  font-size:0.72rem; font-weight:500;
-  cursor:pointer; transition:all 0.2s;
-  letter-spacing:0.02em;
-}
-.signout-btn:hover { border-color:var(--accent); color:var(--accent); }
-
-/* GREETING BAR */
-.greeting-bar {
-  display:none;
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  padding:11px 48px;
-  font-size:0.82rem; color:var(--text2);
-  font-weight:400;
-  margin-top:59px;
-}
-.greeting-bar .g-name { color:var(--accent); font-weight:500; }
-
-/* MAIN CONTENT */
-.ov-main {
-  max-width:1060px; margin:0 auto;
-  padding:60px 48px 80px;
-  display:grid;
-  grid-template-columns:1fr 360px;
-  gap:64px;
-  align-items:start;
-  animation:fadeUp 0.5s ease both;
-}
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-/* LEFT */
-.ov-eyebrow {
-  font-size:0.68rem; font-weight:600; letter-spacing:0.16em;
-  text-transform:uppercase; color:var(--accent);
-  margin-bottom:14px;
-  display:flex; align-items:center; gap:10px;
-}
-.ov-eyebrow::before {
-  content:''; width:24px; height:1px;
-  background:var(--accent); opacity:0.6;
-}
-
-.ov-title {
-  font-family:'Playfair Display', serif;
-  font-size:clamp(1.9rem, 3.5vw, 2.8rem);
-  font-weight:700;
-  color:var(--text); line-height:1.18; margin-bottom:20px;
-}
-.ov-title em { font-style:italic; color:var(--accent); font-weight:400; }
-
-.ov-divider {
-  width:40px; height:2px;
-  background:var(--accent); margin-bottom:22px;
-  border-radius:2px;
-}
-
-.ov-bio {
-  font-size:0.93rem; color:var(--text2);
-  line-height:1.85; margin-bottom:36px;
-  font-weight:400;
-}
-
-/* stat pills */
-.ov-stats {
-  display:flex; gap:10px; flex-wrap:wrap;
-  margin-bottom:0;
-}
-.ov-stat {
-  padding:9px 18px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:6px;
-  display:flex; align-items:center; gap:8px;
-}
-.ov-stat-num {
-  font-family:'Playfair Display', serif;
-  font-size:1.05rem; color:var(--accent);
-}
-.ov-stat-lbl {
-  font-size:0.72rem; color:var(--muted);
-  font-weight:400; letter-spacing:0.02em;
-}
-
-/* RIGHT CARD */
-.ov-card {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px; overflow:hidden;
-  position:sticky; top:80px;
-}
-
-.ov-card-header {
-  padding:16px 22px;
-  border-bottom:1px solid var(--border);
-  font-size:0.68rem; font-weight:600;
-  letter-spacing:0.12em; text-transform:uppercase;
-  color:var(--muted);
-  background:var(--surface2);
-}
-
-.ov-card-body { padding:4px 0 8px; }
-
-.ov-metric {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:11px 22px;
-  border-bottom:1px solid var(--border);
-}
-.ov-metric:last-child { border-bottom:none; }
-
-.ov-metric-label {
-  font-size:0.8rem; color:var(--text2); font-weight:400;
-}
-.ov-metric-right {
-  display:flex; align-items:center; gap:10px;
-}
-.ov-metric-val {
-  font-size:0.78rem; font-weight:500; color:var(--muted);
-  white-space:nowrap;
-}
-.ov-bar-wrap {
-  width:72px; height:4px;
-  background:var(--border2); border-radius:2px; overflow:hidden;
-}
-.ov-bar { height:100%; border-radius:2px; }
-
-/* FOOTER STRIP */
-.ov-footer {
-  border-top:1px solid var(--border);
-  padding:20px 48px;
-  max-width:100%;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.ov-footer-badges { display:flex; gap:8px; flex-wrap:wrap; }
-.ov-badge {
-  padding:5px 12px; border-radius:5px;
-  font-size:0.7rem; font-weight:500;
-  letter-spacing:0.03em; color:var(--muted);
-  background:var(--surface);
-  border:1px solid var(--border);
-}
-.ov-footer-year {
-  font-size:0.72rem; color:var(--muted);
-  font-weight:400; letter-spacing:0.04em;
-}
-
-/* RESPONSIVE */
-@media(max-width:860px) {
-  .ov-main  { grid-template-columns:1fr; gap:40px; padding:48px 24px 64px; }
-  .ov-nav   { padding:0 24px; }
-  .greeting-bar { padding:11px 24px; }
-  .ov-footer { flex-direction:column; gap:12px; padding:20px 24px; align-items:flex-start; }
-  .ov-card  { position:static; }
-}
-@media(max-width:480px) {
-  .name-card { padding:44px 28px 40px; }
-  .ov-stats  { gap:8px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhutan Lifestyle Study</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ══ NAME SCREEN ══ -->
-<div id="name-screen">
-  <div class="name-card">
+  <!-- ══ NAME SCREEN ══ -->
+  <div id="name-screen">
+    <div class="name-card">
 
-    <span class="name-icon">👋</span>
-    <h1>Welcome</h1>
-    <p>Before we begin, please enter your name.</p>
+      <span class="name-icon">👋</span>
+      <h1>Welcome</h1>
+      <p>Before we begin, please enter your name.</p>
 
-    <input class="name-input" type="text" id="inp-name"
-      placeholder="Your name" maxlength="40" autocomplete="off">
+      <input class="name-input" type="text" id="inp-name"
+        placeholder="Your name" maxlength="40" autocomplete="off">
 
-    <button class="name-btn" onclick="submitName()">Continue →</button>
+      <button class="name-btn" onclick="submitName()">Continue →</button>
 
-    <div class="name-error" id="name-error">Please enter your name to continue.</div>
+      <div class="name-error" id="name-error">Please enter your name to continue.</div>
 
-    <div class="name-footer">
-      Bhutan Lifestyle &amp; Wellbeing Study · 2026<br>
-      Gedu College of Business Studies · Data Scientists Pvt. Ltd.
+      <div class="name-footer">
+        Bhutan Lifestyle &amp; Wellbeing Study · 2026<br>
+        Gedu College of Business Studies · Data Scientists Pvt. Ltd.
+      </div>
+
     </div>
-
-  </div>
-</div>
-
-<!-- ══ OVERVIEW SCREEN ══ -->
-<div id="overview-screen">
-
-  <!-- Nav -->
-  <nav class="ov-nav">
-    <div class="ov-brand">Bhutan <span>Lifestyle</span> Study</div>
-    <div class="ov-right">
-      <span class="ov-user-name" id="nav-name"></span>
-      <button class="signout-btn" onclick="doSignOut()">Sign out</button>
-    </div>
-  </nav>
-
-  <!-- Greeting bar -->
-  <div class="greeting-bar" id="greeting-bar">
-    Hello, <span class="g-name" id="greeting-name"></span>. Welcome to the Bhutan Lifestyle &amp; Wellbeing Research project.
   </div>
 
-  <!-- Main content -->
-  <div class="ov-main">
+  <!-- ══ OVERVIEW SCREEN ══ -->
+  <div id="overview-screen">
 
-    <!-- Left: bio -->
-    <div>
-      <div class="ov-eyebrow">Project Overview</div>
-      <h1 class="ov-title">
-        Urban–Rural <em>Lifestyle</em><br>Differences in Bhutan
-      </h1>
-      <div class="ov-divider"></div>
+    <!-- Nav -->
+    <nav class="ov-nav">
+      <div class="ov-brand">Bhutan Lifestyle Study</div>
+      <div class="ov-right">
+        <span class="ov-user-name" id="nav-name"></span>
+        <button class="signout-btn" onclick="doSignOut()">Sign out</button>
+      </div>
+    </nav>
 
-      <p class="ov-bio">
-        I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
-        at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
-        I created this project to examine how daily routines such as sleep, work, and screen use
-        differ between urban and rural residents in Bhutan and how these differences influence
-        sleep quality and daytime energy. Using these insights, I aim to develop evidence-based
-        tools, like a website and mobile app, to help individuals and communities improve their
-        daily habits and overall wellbeing.
-      </p>
+    <!-- Greeting bar -->
+    <div class="greeting-bar" id="greeting-bar">
+      Hello, <span class="g-name" id="greeting-name"></span>. Welcome to the Bhutan Lifestyle &amp; Wellbeing project.
+    </div>
 
-      <div class="ov-stats">
-        <div class="ov-stat">
-          <span class="ov-stat-num">366</span>
-          <span class="ov-stat-lbl">Respondents</span>
+    <!-- Main content -->
+    <div class="ov-main">
+      <div class="ov-content">
+
+        <div class="ov-eyebrow">Project Overview</div>
+
+        <h1 class="ov-title">
+          Urban–Rural <em>Lifestyle</em> Differences in Bhutan
+        </h1>
+
+        <div class="ov-divider"></div>
+
+        <p class="ov-bio">
+          I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
+          at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
+          This project examines how sleep, work, and screen habits differ between urban and rural
+          residents and how these affect sleep quality and energy levels.
+        </p>
+
+        <!-- Stats -->
+        <div class="ov-stats">
+          <div class="ov-stat">
+            <span class="ov-stat-num">366</span>
+            <span class="ov-stat-lbl">Respondents</span>
+          </div>
+          <div class="ov-stat">
+            <span class="ov-stat-num">238</span>
+            <span class="ov-stat-lbl">Urban</span>
+          </div>
+          <div class="ov-stat">
+            <span class="ov-stat-num">120</span>
+            <span class="ov-stat-lbl">Rural</span>
+          </div>
+          <div class="ov-stat">
+            <span class="ov-stat-num">2026</span>
+            <span class="ov-stat-lbl">Study Year</span>
+          </div>
         </div>
-        <div class="ov-stat">
-          <span class="ov-stat-num">238</span>
-          <span class="ov-stat-lbl">Urban</span>
+
+        <!-- Key Findings Table -->
+        <div class="ov-table-box">
+          <table class="ov-table">
+            <thead>
+              <tr>
+                <th colspan="2" class="ov-table-title">
+                  Overview of the Key Findings
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-num">1</td>
+                <td>Respondent Distribution</td>
+              </tr>
+              <tr>
+                <td class="td-num">2</td>
+                <td>Core Insights</td>
+              </tr>
+              <tr>
+                <td class="td-num">3</td>
+                <td>Correlation Insights</td>
+              </tr>
+              <tr>
+                <td class="td-num">4</td>
+                <td>Habits Affecting Sleep Quality</td>
+              </tr>
+              <tr>
+                <td class="td-num">5</td>
+                <td>Preferences for Sleep Support Tools</td>
+              </tr>
+              <tr>
+                <td class="td-num">6</td>
+                <td>Future Interest in Sleep Tools</td>
+              </tr>
+              <tr>
+                <td class="td-num">7</td>
+                <td>Key Takeaways</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="ov-stat">
-          <span class="ov-stat-num">120</span>
-          <span class="ov-stat-lbl">Rural</span>
-        </div>
-        <div class="ov-stat">
-          <span class="ov-stat-num">2026</span>
-          <span class="ov-stat-lbl">Study Year</span>
-        </div>
+
       </div>
     </div>
 
-    <!-- Right: glance card -->
-    <div class="ov-card">
-      <div class="ov-card-header">Study at a Glance</div>
-      <div class="ov-card-body">
-        <div class="ov-metric">
-          <span class="ov-metric-label">Sleep Duration</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">~7 hrs avg</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:76%;background:var(--accent);"></div></div>
-          </div>
-        </div>
-        <div class="ov-metric">
-          <span class="ov-metric-label">Screen Before Bed</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">Top risk factor</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:88%;background:#C0392B;"></div></div>
-          </div>
-        </div>
-        <div class="ov-metric">
-          <span class="ov-metric-label">Work Hours Impact</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">Minimal effect</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:22%;background:var(--muted);"></div></div>
-          </div>
-        </div>
-        <div class="ov-metric">
-          <span class="ov-metric-label">Urban Work Type</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">Mental / Mixed</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:65%;background:var(--sky);"></div></div>
-          </div>
-        </div>
-        <div class="ov-metric">
-          <span class="ov-metric-label">Rural Work Type</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">Physical</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:55%;background:var(--green-lt);"></div></div>
-          </div>
-        </div>
-        <div class="ov-metric">
-          <span class="ov-metric-label">App Interest</span>
-          <div class="ov-metric-right">
-            <span class="ov-metric-val">High demand</span>
-            <div class="ov-bar-wrap"><div class="ov-bar" style="width:92%;background:var(--accent-lt);"></div></div>
-          </div>
-        </div>
+    <!-- Footer -->
+    <footer class="ov-footer">
+      <div class="ov-footer-badges">
+        <span class="ov-badge">Gedu College of Business Studies</span>
+        <span class="ov-badge">Data Scientists Pvt. Ltd.</span>
+        <span class="ov-badge">Bhutan · Sleep &amp; Lifestyle Research</span>
       </div>
-    </div>
+      <div class="ov-footer-year">2026</div>
+    </footer>
 
   </div>
 
-  <!-- Footer -->
-  <footer class="ov-footer">
-    <div class="ov-footer-badges">
-      <span class="ov-badge">Gedu College of Business Studies</span>
-      <span class="ov-badge">Data Scientists Pvt. Ltd.</span>
-      <span class="ov-badge">Bhutan · Sleep &amp; Lifestyle Research</span>
-    </div>
-    <div class="ov-footer-year">2026</div>
-  </footer>
-
-</div>
-
-<script>
-let visitorName = '';
-
-// ── Paste your Apps Script Web App URL here ──
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbys3-Yefk8RbNEMZFzBJ9xupG4WMWhitYAw1EfoJnQwDEI-miDb9jNC2bthJtGbLGib2A/exec';
-
-function logVisitor(name) {
-  if (!SHEET_URL || SHEET_URL === 'YOUR_APPS_SCRIPT_URL') return;
-  const now = new Date().toLocaleString('en-GB', {
-    day:'2-digit', month:'short', year:'numeric',
-    hour:'2-digit', minute:'2-digit', hour12:true
-  });
-  fetch(SHEET_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, time: now }),
-    mode: 'no-cors'
-  }).catch(() => {}); // silent — never blocks the user
-}
-
-function submitName() {
-  const name = document.getElementById('inp-name').value.trim();
-  const err  = document.getElementById('name-error');
-  if (!name) { err.style.display = 'block'; return; }
-  err.style.display = 'none';
-  visitorName = name;
-
-  // Log to Google Sheets silently
-  logVisitor(name);
-
-  document.getElementById('name-screen').style.display     = 'none';
-  document.getElementById('overview-screen').style.display = 'block';
-  document.getElementById('nav-name').textContent          = name;
-  document.getElementById('greeting-name').textContent     = name;
-
-  const bar = document.getElementById('greeting-bar');
-  bar.style.display = 'block';
-  bar.style.opacity = '0';
-  bar.style.transition = 'opacity 0.35s ease';
-  setTimeout(() => { bar.style.opacity = '1'; }, 60);
-
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}
-
-function doSignOut() {
-  document.getElementById('overview-screen').style.display = 'none';
-  document.getElementById('greeting-bar').style.display    = 'none';
-  document.getElementById('name-screen').style.display     = 'flex';
-  document.getElementById('inp-name').value                = '';
-  document.getElementById('name-error').style.display      = 'none';
-  visitorName = '';
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' &&
-      document.getElementById('name-screen').style.display !== 'none') {
-    submitName();
-  }
-});
-</script>
+  <script src="script.js"></script>
 </body>
 </html>

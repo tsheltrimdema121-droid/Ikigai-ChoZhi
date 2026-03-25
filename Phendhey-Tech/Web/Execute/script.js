@@ -47,13 +47,11 @@ function submitName() {
 
   logVisitor(name);
 
-  // Show overview, hide name screen
   document.getElementById('name-screen').style.display     = 'none';
   document.getElementById('overview-screen').style.display = 'block';
   document.getElementById('nav-name').textContent          = name;
   document.getElementById('greeting-name').textContent     = name;
 
-  // Fade in greeting bar
   const bar = document.getElementById('greeting-bar');
   bar.style.display    = 'block';
   bar.style.opacity    = '0';
