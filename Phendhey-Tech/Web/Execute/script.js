@@ -81,15 +81,15 @@ function setGreetingCards(name, greet) {
   const cards = [
     {
       id: 'about-greeting-text',
-      text: `${greet}, ${name}. This section explains why this study was conducted, who carried it out, and what questions it set out to answer.`,
+      text: `${name}, this section explains why this study was conducted, who carried it out, and what questions it set out to answer.`,
     },
     {
       id: 'findings-greeting-text',
-      text: `${greet}, ${name}. Here's a breakdown of the seven key findings from the study — from respondent distribution to market readiness for wellness tools.`,
+      text: `${name}, here's a breakdown of the seven key findings from the study — from respondent distribution to market readiness for wellness tools.`,
     },
     {
       id: 'market-greeting-text',
-      text: `${greet}, ${name}. This section examines whether Bhutan has a viable market for digital wellness tools — and what the data says.`,
+      text: ` ${name}, this section examines whether Bhutan has a viable market for digital wellness tools — and what the data says.`,
     },
   ];
   cards.forEach(({ id, text }) => {
