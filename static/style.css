@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    /* BACKGROUND IMAGE BACK */
+    background-image: url("../static/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Center content */
+.overlay {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+/* TEXT BOX ONLY (transparent effect) */
+.text-box {
+    background: rgba(0, 0, 0, 0.6);  /* transparent black */
+    padding: 25px;
+    border-radius: 12px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c0392b;
+}
+
+/* Dashboard fix */
+.dashboard-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.dashboard-container iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+}
