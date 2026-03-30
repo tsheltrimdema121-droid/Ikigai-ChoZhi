@@ -1,0 +1,90 @@
+body {
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/026/754/083/small/cellular-technology-located-on-the-smart-city-is-pixelated-smart-city-concept-with-signal-towers-for-people-in-the-city-to-access-information-send-business-communications-smoothly-vector.jpg");
+    background-size: cover;   
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(237, 237, 212);
+}
+
+img {
+    width: 35%;
+    margin-top: 30px;
+}
+
+nav {
+    display:flex;
+    flex-direction: row;
+    /* text-align: right; */
+    justify-content: flex-end;
+    padding: 20px;
+}
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: rgb(243, 111, 17);
+    font-weight: bold;
+}
+
+.main-content {
+    text-align: center;
+    margin-top: 50px;
+    color:rgb(242, 125, 29);
+}
+
+input {
+    box-sizing: border-box;
+    display: block;
+    border-radius: 24px;
+    border: 1px solid rgb(180, 181, 184);
+    height: 44px;
+    margin: 0 auto 29px;
+    max-width: 564px;
+    width: 90%;
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    background-color: rgb(252, 115, 11);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(236, 139, 12);
+}
+
+footer{
+   background-color:#ecab66;
+   color:rgb(15, 6, 6);
+   text-align:center;
+   padding:10px;
+   margin-top:500px;
+}
+
+/* Form container */
+.quiz-form {
+    margin: 150px auto;
+    width: 350px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+}
+
+/* Inputs, dropdowns, buttons */
+.quiz-form input,
+.quiz-form select,
+.quiz-form button {
+    width: 300px;
+    height: 45px;
+    margin: 10px;
+    border-radius: 25px;
+    padding-left: 10px;         
+    font-size: 16px;
+}
+
+
+

@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Readiness in Bhutan | DrukShift</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:    #08192d;
+            --deep:    #0f2a45;
+            --blue:    #1a4a7a;
+            --mid:     #2a6aad;
+            --accent:  #f4a261;
+            --gold:    #e9c46a;
+            --teal:    #2a9d8f;
+            --red:     #e63946;
+            --light:   #eef2f7;
+            --white:   #ffffff;
+            --muted:   #7a9bb5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--light);
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+
+        /* ═══════════════════════════
+           NAV
+        ═══════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 48px;
+            background: rgba(8,25,45,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        /* ═══════════════════════════
+           HERO
+        ═══════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 70% 50%, rgba(42,106,173,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(244,162,97,0.1) 0%, transparent 50%),
+                linear-gradient(160deg, var(--navy) 0%, var(--deep) 50%, #0a1f38 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 48px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative grid lines */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Glowing orb */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%; right: 10%;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(42,106,173,0.2) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 720px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244,162,97,0.12);
+            border: 1px solid rgba(244,162,97,0.35);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            animation: fadeDown 0.6s ease both;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-intro {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 24px;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .hero-intro strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto 40px;
+            animation: fadeUp 0.6s 0.2s ease both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.6s 0.3s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: #e8935a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(244,162,97,0.35);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.3);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeUp 1s 0.8s ease both;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ═══════════════════════════
+           STATS
+        ═══════════════════════════ */
+        .stats-section {
+            background: var(--white);
+            box-shadow: 0 2px 40px rgba(8,25,45,0.08);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #e4eaf2;
+        }
+
+        .stat-item {
+            padding: 32px 56px;
+            text-align: center;
+            border-right: 1px solid #edf2f7;
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: #fafcff; }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 40px; height: 2px;
+            background: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover::after { transform: translateX(-50%) scaleX(1); }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--blue);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-lbl {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ═══════════════════════════
+           DASHBOARD SECTION
+        ═══════════════════════════ */
+        .dashboard-section {
+            padding: 100px 48px;
+            background: linear-gradient(160deg, var(--deep) 0%, var(--navy) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .dashboard-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .dashboard-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .dashboard-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-section p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Preview card */
+        .dashboard-preview {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .preview-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 20px 16px;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .preview-item .p-icon { font-size: 20px; margin-bottom: 8px; }
+        .preview-item .p-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-dashboard {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent), #e8935a);
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 30px rgba(244,162,97,0.3);
+        }
+
+        .btn-dashboard:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(244,162,97,0.45);
+        }
+
+        .btn-dashboard .arrow {
+            width: 20px; height: 20px;
+            background: rgba(8,25,45,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .btn-dashboard:hover .arrow { transform: translateX(3px); }
+
+        .btn-note {
+            display: block;
+            margin-top: 16px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* GNH SECTION */
+        .gnh-section {
+            padding: 100px 48px;
+            background: linear-gradient(160deg, #0a1f38 0%, #0d2137 50%, #0f2a45 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .gnh-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(233,196,106,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(233,196,106,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .gnh-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .gnh-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .gnh-section h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .gnh-section p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gnh-domains {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .gnh-pill {
+            background: rgba(233,196,106,0.1);
+            border: 1px solid rgba(233,196,106,0.3);
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: all 0.2s;
+        }
+
+        .gnh-pill:hover {
+            background: rgba(233,196,106,0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-gnh {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gold), #d4a017);
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 30px rgba(233,196,106,0.3);
+        }
+
+        .btn-gnh:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(233,196,106,0.45);
+        }
+
+        /* GNH MODAL */
+        .gnh-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8,25,45,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gnh-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .about-inner-simple {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .about-inner-simple h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .about-inner-simple h2 em { font-style: italic; color: var(--mid); }
+        .about-inner-simple p { font-size: 14px; color: #5a7a8a; line-height: 1.9; margin-bottom: 16px; }
+        .about-inner-simple strong { color: var(--navy); font-weight: 600; }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background: var(--white);
+            padding: 80px 48px;
+        }
+
+        .about-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text .section-tag { margin-bottom: 16px; display: block; }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .about-text h2 em { font-style: italic; color: var(--mid); }
+        .about-text p { font-size: 14px; color: #5a7a8a; line-height: 1.9; margin-bottom: 16px; }
+        .about-text strong { color: var(--navy); font-weight: 600; }
+
+        .about-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-stat {
+            text-align: center;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px 16px;
+            box-shadow: 0 2px 12px rgba(8,25,45,0.06);
+        }
+
+        .about-stat-num {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--blue);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .about-stat-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* SOLUTIONS SECTION */
+        .solutions-section {
+            padding: 100px 48px;
+            background: var(--light);
+        }
+
+        .solutions-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solutions-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .solutions-inner h2 em { font-style: italic; color: var(--teal); }
+
+        .solutions-inner > p {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 32px 28px;
+            box-shadow: 0 2px 24px rgba(8,25,45,0.06);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(8,25,45,0.12);
+        }
+
+        .solution-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .solution-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #e8eef4;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .solution-icon { font-size: 28px; margin-bottom: 12px; }
+
+        .solution-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .solution-card p {
+            font-size: 13px;
+            color: #7a95ab;
+            line-height: 1.7;
+        }
+
+        .solution-card:nth-child(1) { border-top: 4px solid var(--mid); }
+        .solution-card:nth-child(2) { border-top: 4px solid var(--teal); }
+        .solution-card:nth-child(3) { border-top: 4px solid #e63946; }
+        .solution-card:nth-child(4) { border-top: 4px solid var(--gold); }
+        .solution-card:nth-child(5) { border-top: 4px solid var(--accent); }
+
+        .btn-solutions {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--teal), #1a7a6e);
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(42,157,143,0.3);
+        }
+
+        .btn-solutions:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(42,157,143,0.45);
+        }
+
+        /* READINESS SECTION */
+        .readiness-section {
+            padding: 100px 48px;
+            background: linear-gradient(160deg, #0f2a45 0%, #0d2137 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .readiness-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(244,162,97,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244,162,97,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .readiness-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .readiness-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .readiness-section h2 em { font-style: italic; color: var(--accent); }
+
+        .readiness-section p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .readiness-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .readiness-pill {
+            background: rgba(244,162,97,0.1);
+            border: 1px solid rgba(244,162,97,0.3);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: all 0.2s;
+        }
+
+        .readiness-pill:hover {
+            background: rgba(244,162,97,0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-readiness {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent), #e8935a);
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(244,162,97,0.3);
+        }
+
+        .btn-readiness:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(244,162,97,0.45);
+        }
+
+        /* REPORTS SECTION */
+        .reports-section {
+            padding: 80px 48px;
+            background: var(--navy);
+        }
+
+        .reports-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .reports-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .reports-inner h2 em { font-style: italic; color: var(--accent); }
+
+        .reports-inner > p {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .report-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .report-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+        }
+
+        .report-icon { font-size: 32px; }
+
+        .report-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .report-info p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .report-meta {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-report {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s;
+            margin-top: auto;
+        }
+
+        .btn-report:hover {
+            background: #e8935a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244,162,97,0.3);
+        }
+
+        .btn-report-teal {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+        .btn-report-teal:hover {
+            background: #228b7e;
+            box-shadow: 0 8px 24px rgba(42,157,143,0.3);
+        }
+
+        /* FINDINGS SECTION */
+        .findings-section {
+            padding: 100px 48px;
+            background: var(--light);
+        }
+
+        .findings-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .accent-line {
+            width: 48px;
+            height: 3px;
+            background: var(--accent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .finding-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 36px 32px;
+            box-shadow: 0 2px 24px rgba(8,25,45,0.06);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .finding-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+        }
+
+        .finding-card:nth-child(1)::before { background: var(--mid); }
+        .finding-card:nth-child(2)::before { background: var(--accent); }
+        .finding-card:nth-child(3)::before { background: var(--teal); }
+        .finding-card:nth-child(4)::before { background: var(--gold); }
+
+        .finding-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(8,25,45,0.12);
+        }
+
+        .finding-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #e8eef4;
+            position: absolute;
+            top: 20px; right: 24px;
+            line-height: 1;
+        }
+
+        .finding-icon { font-size: 28px; margin-bottom: 16px; }
+
+        .finding-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .finding-card p {
+            font-size: 13px;
+            color: #7a95ab;
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════
+           FOOTER
+        ═══════════════════════════ */
+        footer {
+            background: var(--navy);
+            padding: 60px 48px 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-logo span { color: var(--accent); }
+
+        .footer-tagline {
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 auto 32px;
+        }
+
+        .footer-info {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            line-height: 2;
+        }
+
+        /* ═══════════════════════════
+           MODAL
+        ═══════════════════════════ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8,25,45,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1500px;
+            height: 95vh;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(90deg, var(--navy), var(--blue));
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .modal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 13px; height: 13px; border-radius: 50%; }
+        .dot-r { background: #ff5f57; }
+        .dot-y { background: #febc2e; }
+        .dot-g { background: #28c840; }
+
+        .modal-title {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .modal-close {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.25);
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: auto;
+            background: #f0f4f8;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-body tableau-viz {
+            width: 100% !important;
+            min-height: 850px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(8,25,45,0.1);
+        }
+
+        /* ═══════════════════════════
+           ANIMATIONS
+        ═══════════════════════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item { animation: fadeUp 0.5s ease both; }
+        .stat-item:nth-child(1) { animation-delay: 0.05s; }
+        .stat-item:nth-child(2) { animation-delay: 0.1s; }
+        .stat-item:nth-child(3) { animation-delay: 0.15s; }
+        .stat-item:nth-child(4) { animation-delay: 0.2s; }
+        .stat-item:nth-child(5) { animation-delay: 0.25s; }
+
+        .finding-card { animation: fadeUp 0.5s ease both; }
+        .finding-card:nth-child(1) { animation-delay: 0.05s; }
+        .finding-card:nth-child(2) { animation-delay: 0.1s; }
+        .finding-card:nth-child(3) { animation-delay: 0.15s; }
+        .finding-card:nth-child(4) { animation-delay: 0.2s; }
+
+        /* ═══════════════════════════
+           MOBILE RESPONSIVE
+        ═══════════════════════════ */
+        @media (max-width: 768px) {
+
+            /* Nav */
+            nav {
+                padding: 14px 20px;
+            }
+            .nav-links {
+                gap: 16px;
+            }
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 100px 24px 60px;
+                min-height: auto;
+            }
+            .hero-desc {
+                font-size: 14px;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+            .scroll-hint { display: none; }
+
+            /* Stats */
+            .stats-section {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-item {
+                padding: 20px 16px;
+                border-right: 1px solid #edf2f7;
+                border-bottom: 1px solid #edf2f7;
+            }
+            .stat-num { font-size: 32px; }
+
+            /* About section */
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .about-section { padding: 60px 24px; }
+
+            /* Readiness section */
+            .readiness-section { padding: 60px 24px; }
+            .btn-readiness {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+
+            /* Dashboard section */
+            .dashboard-section {
+                padding: 60px 24px;
+            }
+            .dashboard-preview {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px;
+                gap: 12px;
+            }
+            .btn-dashboard {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+
+            /* GNH section */
+            .gnh-section {
+                padding: 60px 24px;
+            }
+            .btn-gnh {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+
+            /* Findings */
+            .findings-section {
+                padding: 60px 20px;
+            }
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Modal */
+            .modal-overlay {
+                padding: 0;
+            }
+            .modal {
+                border-radius: 0;
+                height: 100vh;
+                max-width: 100%;
+            }
+            .modal-header {
+                padding: 14px 16px;
+            }
+            .modal-dots { display: none; }
+            .modal-title {
+                font-size: 12px;
+            }
+            .modal-body {
+                padding: 12px;
+            }
+            .modal-body tableau-viz {
+                min-height: 600px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-section {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat-item {
+                padding: 16px 12px;
+            }
+            .stat-num { font-size: 28px; }
+            .stat-lbl { font-size: 9px; }
+            .dashboard-preview {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gnh-pill {
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#gnh">GNH Story</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#readiness">Readiness</a></li>
+            <li><a href="#findings">Findings</a></li>
+            <li><a href="#reports">Reports</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🇧🇹 Bhutan Data Scientists Pvt. Ltd — Internship 2026</div>
+            <div class="hero-intro">
+                Hi, I am <strong>Kinzang Choden</strong> — a 3rd year Business Intelligence student 
+                doing my internship at Bhutan Data Scientists Pvt. Ltd. 
+                This is my internship project exploring cryptocurrency readiness in Bhutan.
+            </div>
+            <h1>Cryptocurrency<br><em>Readiness</em><br>in Bhutan</h1>
+            <p class="hero-desc">A data-driven survey project by <strong style="color:var(--accent)">Kinzang Choden</strong> — 3rd Year Business Intelligence Student interning at Bhutan Data Scientists Pvt. Ltd, examining whether Bhutanese adults are prepared to adopt cryptocurrency — aligned with Bhutan's GNH values.</p>
+            <div class="hero-buttons">
+                <a href="#gnh" class="btn-primary">
+                    🇧🇹 View GNH Story
+                </a>
+                <a href="#findings" class="btn-secondary">
+                    🔑 View Key Findings
+                </a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            Scroll
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="about-inner-simple">
+            <span class="section-tag" style="color:var(--mid)">👋 About Me</span>
+            <h2>Hi, I am <em>Kinzang Choden</em></h2>
+            <p>I am a 3rd year Business Intelligence student currently doing my internship at <strong>Bhutan Data Scientists Pvt. Ltd (BDS)</strong> — Bhutan's leading data science company focused on building data literacy and analytical capability across the country.</p>
+            <p>During my internship I designed and developed this project from scratch — from collecting 113 survey responses, cleaning the data using Python, building 12 interactive Tableau visualizations, aligning findings with Bhutan's GNH values, and publishing everything as a live website on GitHub Pages.</p>
+            <p>This project is called <strong>DrukShift</strong> — named after Bhutan's identity as the Land of the Thunder Dragon and our shift toward the future of digital finance. I believe cryptocurrency readiness in Bhutan is not just a technology question — it is a happiness question.</p>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section" id="stats">
+        <div class="stat-item">
+            <div class="stat-num">113</div>
+            <div class="stat-lbl">Respondents</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">80%</div>
+            <div class="stat-lbl">Overall Readiness</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">96%</div>
+            <div class="stat-lbl">Crypto Awareness</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">12.75</div>
+            <div class="stat-lbl">Avg Score / 16</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">#1</div>
+            <div class="stat-lbl">Barrier: Internet</div>
+        </div>
+    </section>
+
+    <!-- GNH SECTION -->
+    <section class="gnh-section" id="gnh">
+        <div class="gnh-inner">
+            <span class="section-tag" style="color:var(--gold)">🇧🇹 GNH Alignment</span>
+            <h2>Crypto Readiness as<br>a <em>GNH Story</em></h2>
+            <p>Bhutan measures progress through happiness — not just money. This story maps cryptocurrency readiness across 6 GNH domains — Education, Living Standards, Psychological Wellbeing, Governance, Community Vitality and Time Use.</p>
+
+            <!-- GNH Domain Pills -->
+            <div class="gnh-domains">
+                <div class="gnh-pill">🎓 Education</div>
+                <div class="gnh-pill">🏠 Living Standards</div>
+                <div class="gnh-pill">🧠 Psychological Wellbeing</div>
+                <div class="gnh-pill">🏛️ Governance</div>
+                <div class="gnh-pill">🤝 Community Vitality</div>
+                <div class="gnh-pill">⏰ Time Use</div>
+            </div>
+
+            <button class="btn-gnh" onclick="openGNHModal()">
+                🇧🇹 View GNH Story
+                <span class="arrow">→</span>
+            </button>
+            <span class="btn-note" style="color:rgba(255,255,255,0.3)">Opens interactive GNH story — no download required</span>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS SECTION -->
+    <section class="solutions-section" id="solutions">
+        <div class="solutions-inner">
+            <span class="section-tag" style="color:var(--teal)">💡 Recommendations</span>
+            <h2>5 Solutions to Improve<br><em>Crypto Readiness in Bhutan</em></h2>
+            <p>Based on 113 survey responses, these five targeted solutions address the real barriers identified in the data — from education gaps to scam vulnerability.</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-num">01</div>
+                    <div class="solution-icon">🎓</div>
+                    <h3>Close the Education Gap</h3>
+                    <p>Run targeted crypto literacy programs for 35-54 and 55+ age groups. Young people need digital platforms. Older generations need community workshops and face to face education in local languages.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">02</div>
+                    <div class="solution-icon">🌐</div>
+                    <h3>Fix Internet Infrastructure First</h3>
+                    <p>Poor internet is barrier number one. The government must expand reliable and affordable internet to rural and semi-urban areas before pushing crypto adoption. Connectivity is a prerequisite — not a luxury.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">03</div>
+                    <div class="solution-icon">🛡️</div>
+                    <h3>Protect Vulnerable Groups from Scams</h3>
+                    <p>The 35-44 group has the highest trust and lowest security concern — the perfect target for scammers. Launch dedicated scam awareness campaigns with simple clear messaging about red flags and how to stay safe.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">04</div>
+                    <div class="solution-icon">🏛️</div>
+                    <h3>Government Must Lead on Governance</h3>
+                    <p>People are already asking for government support. Create clear cryptocurrency regulations, establish consumer protection laws, and build a transparent framework. Strong government leadership is the single most powerful accelerator of adoption in Bhutan.</p>
+                </div>
+                <div class="solution-card solution-card-wide">
+                    <div class="solution-num">05</div>
+                    <div class="solution-icon">🤝</div>
+                    <h3>Start With Communities — Let Adoption Grow Naturally</h3>
+                    <p>The majority said Maybe — not No. These undecided people are waiting to see crypto work in real life. Encourage local shops and small businesses to accept crypto as payment. When people see their favorite restaurant using crypto safely — it becomes real, relatable and trustworthy. Change starts in communities, not government offices.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top: 48px;">
+                <button class="btn-solutions" onclick="openSolutionsModal()">
+                    💡 View Full Solutions Story
+                    <span class="arrow">→</span>
+                </button>
+                <span class="btn-note" style="display:block; margin-top:12px; color:var(--muted)">Opens interactive Tableau story — no download required</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- READINESS IMPROVEMENT SECTION -->
+    <section class="readiness-section" id="readiness">
+        <div class="readiness-inner">
+            <span class="section-tag" style="color:var(--accent)">📈 Story 2</span>
+            <h2>How Can Readiness<br>Be <em>Improved Over Time?</em></h2>
+            <p>Using age groups as a generational proxy, this story explores how crypto readiness changes across generations — and what it means for Bhutan's digital future. Younger generations show the path forward, while older groups reveal where urgent support is needed.</p>
+
+            <div class="readiness-pills">
+                <div class="readiness-pill">📉 Readiness drops after 35</div>
+                <div class="readiness-pill">🎯 25-34 score highest at 13.74</div>
+                <div class="readiness-pill">⚠️ 55+ score lowest at 7.83</div>
+                <div class="readiness-pill">📚 Education is the key gap</div>
+            </div>
+
+            <button class="btn-readiness" onclick="openReadinessModal()">
+                📈 View Readiness Story
+                <span class="arrow">→</span>
+            </button>
+            <span class="btn-note">Opens interactive story — no download required</span>
+        </div>
+    </section>
+
+    <!-- KEY FINDINGS -->
+    <section class="findings-section" id="findings">
+        <div class="findings-inner">
+            <div class="section-header">
+                <span class="section-tag" style="color:var(--mid)">Research Results</span>
+                <h2>Key Findings</h2>
+                <p>Four critical insights from 113 survey responses</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <span class="finding-num">01</span>
+                    <div class="finding-icon">🏆</div>
+                    <h3>Bhutan is 80% Ready</h3>
+                    <p>Average readiness score of 12.75 out of 16 — Bhutan shows strong foundational readiness for cryptocurrency adoption aligned with GNH values.</p>
+                </div>
+                <div class="finding-card">
+                    <span class="finding-num">02</span>
+                    <div class="finding-icon">👂</div>
+                    <h3>High Awareness, Low Understanding</h3>
+                    <p>96% have heard of cryptocurrency but most only have basic understanding — a critical knowledge gap exists between awareness and true readiness.</p>
+                </div>
+                <div class="finding-card">
+                    <span class="finding-num">03</span>
+                    <div class="finding-icon">🌐</div>
+                    <h3>Internet is Barrier #1</h3>
+                    <p>Poor internet connection is the single biggest barrier to adoption — especially critical for rural communities who remain underserved.</p>
+                </div>
+                <div class="finding-card">
+                    <span class="finding-num">04</span>
+                    <div class="finding-icon">📅</div>
+                    <h3>Age Predicts Readiness</h3>
+                    <p>Age is a stronger predictor of readiness than location — younger groups show consistently higher scores regardless of where they live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPORTS SECTION -->
+    <section class="reports-section" id="reports">
+        <div class="reports-inner">
+            <span class="section-tag" style="color:var(--muted)">📄 Documentation</span>
+            <h2>Project <em>Reports</em></h2>
+            <p>Download and read the full project documentation — business report and key findings — published as interactive HTML reports.</p>
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-icon">📋</div>
+                    <div class="report-info">
+                        <h3>Business Report</h3>
+                        <p>Full project documentation covering problem statement, methodology, GNH alignment, web integration, solutions and conclusion.</p>
+                        <span class="report-meta">10 pages · HTML Report</span>
+                    </div>
+                    <a href="BusinessReport.html" target="_blank" class="btn-report">
+                        Open Report →
+                    </a>
+                </div>
+                <div class="report-card">
+                    <div class="report-icon">🔑</div>
+                    <div class="report-info">
+                        <h3>Key Findings Report</h3>
+                        <p>Deep dive into all 7 key findings with data tables, charts interpretation and business insights for each finding.</p>
+                        <span class="report-meta">9 pages · HTML Report</span>
+                    </div>
+                    <a href="keyfindings.html" target="_blank" class="btn-report btn-report-teal">
+                        Open Report →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Druk<span>Shift</span> 🇧🇹</div>
+        <div class="footer-tagline">Shift Forward, Bhutan</div>
+        <div class="footer-divider"></div>
+        <div class="footer-info">
+            Druk = The Land of the Thunder Dragon &nbsp;·&nbsp; Shift = Shifting towards the future of digital finance
+            <br>
+            Kinzang Choden &nbsp;·&nbsp; BDS Internship 2026 &nbsp;·&nbsp; Bhutan Data Scientists Pvt. Ltd
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">Cryptocurrency Readiness in Bhutan — Tableau Public</span>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- SCAM MODAL -->
+    <div class="gnh-modal-overlay" id="scamModalOverlay" onclick="handleScamOverlayClick(event)">
+        <div class="modal" id="scamModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">🛡️ Scam Vulnerability — Who is Most at Risk?</span>
+                <button class="modal-close" onclick="closeScamModal()">✕</button>
+            </div>
+            <div class="modal-body" id="scamModalBody"></div>
+        </div>
+    </div>
+
+    <!-- SOLUTIONS MODAL -->
+    <div class="gnh-modal-overlay" id="solutionsModalOverlay" onclick="handleSolutionsOverlayClick(event)">
+        <div class="modal" id="solutionsModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">💡 5 Solutions to Improve Crypto Readiness in Bhutan</span>
+                <button class="modal-close" onclick="closeSolutionsModal()">✕</button>
+            </div>
+            <div class="modal-body" id="solutionsModalBody"></div>
+        </div>
+    </div>
+
+    <!-- GNH MODAL -->
+    <div class="gnh-modal-overlay" id="gnhModalOverlay" onclick="handleGNHOverlayClick(event)">
+        <div class="modal" id="gnhModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">🇧🇹 Cryptocurrency Readiness — GNH Story</span>
+                <button class="modal-close" onclick="closeGNHModal()">✕</button>
+            </div>
+            <div class="modal-body" id="gnhModalBody"></div>
+        </div>
+    </div>
+
+    <!-- READINESS MODAL -->
+    <div class="gnh-modal-overlay" id="readinessModalOverlay" onclick="handleReadinessOverlayClick(event)">
+        <div class="modal" id="readinessModal">
+            <div class="modal-header">
+                <div class="modal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="modal-title">📈 How Can Readiness Be Improved Over Time?</span>
+                <button class="modal-close" onclick="closeReadinessModal()">✕</button>
+            </div>
+            <div class="modal-body" id="readinessModalBody"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { TableauEventType } from "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js";
+
+        // Scam Vulnerability Story
+        window.openScamModal = function() {
+            const overlay = document.getElementById('scamModalOverlay');
+            const body = document.getElementById('scamModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Story4");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeScamModal = function() {
+            const overlay = document.getElementById('scamModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleScamOverlayClick = function(e) {
+            if (e.target === document.getElementById('scamModalOverlay')) closeScamModal();
+        }
+
+        // Solutions Story
+        window.openSolutionsModal = function() {
+            const overlay = document.getElementById('solutionsModalOverlay');
+            const body = document.getElementById('solutionsModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Story4");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeSolutionsModal = function() {
+            const overlay = document.getElementById('solutionsModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleSolutionsOverlayClick = function(e) {
+            if (e.target === document.getElementById('solutionsModalOverlay')) closeSolutionsModal();
+        }
+
+        // GNH Story
+        window.openGNHModal = function() {
+            const overlay = document.getElementById('gnhModalOverlay');
+            const body = document.getElementById('gnhModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Story2");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeGNHModal = function() {
+            const overlay = document.getElementById('gnhModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleGNHOverlayClick = function(e) {
+            if (e.target === document.getElementById('gnhModalOverlay')) closeGNHModal();
+        }
+
+        // Readiness Story
+        window.openReadinessModal = function() {
+            const overlay = document.getElementById('readinessModalOverlay');
+            const body = document.getElementById('readinessModalBody');
+            if (!body.querySelector('tableau-viz')) {
+                const viz = document.createElement("tableau-viz");
+                viz.setAttribute("src", "https://public.tableau.com/views/Tableaucryptoreadiness/Readinesss");
+                viz.setAttribute("width", "100%");
+                viz.setAttribute("height", "900");
+                viz.setAttribute("hide-tabs", "false");
+                viz.setAttribute("toolbar", "bottom");
+                body.appendChild(viz);
+            }
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => overlay.classList.add('active'), 10);
+        }
+
+        window.closeReadinessModal = function() {
+            const overlay = document.getElementById('readinessModalOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        window.handleReadinessOverlayClick = function(e) {
+            if (e.target === document.getElementById('readinessModalOverlay')) closeReadinessModal();
+        }
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGNHModal();
+                closeReadinessModal();
+                closeScamModal();
+                closeSolutionsModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

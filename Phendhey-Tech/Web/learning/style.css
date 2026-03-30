@@ -1,0 +1,180 @@
+/*  GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Mono:wght@300;400;500&family=Pacifico&family=Josefin+Sans:wght@300;600&family=Merriweather:wght@300;700&family=Caveat:wght@500;700&family=Orbitron:wght@500;700&display=swap');
+
+
+:root {
+  --bg:        #fdf6ec;
+  --purple:    #b07fe9;
+  --green:     #7bbfaa;
+  --bisque:    #FFE4C4;
+  --tan:       #b3aea8;
+  --text:      #3a3430;
+  --accent:    #e2642a;
+  --radius:    16px;
+  --shadow:    0 4px 18px rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 20px 80px;
+  font-family: 'Josefin Sans', sans-serif; /* BODY default font */
+  background: var(--bg);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.Welcome { width: 100%; }
+.WelcomeGIF { text-align: center; }
+.WelcomeGIF img { max-width: 50%; border-radius: var(--radius); }
+
+.Topic {
+  text-align: center;
+  background: var(--purple);
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(85%, 900px);
+  font-family: 'Pacifico', cursive; 
+}
+
+.TitleText {
+  display: inline-block;
+  background: white;
+  padding: 12px 28px;
+  border: 2.5px solid var(--accent);
+  border-radius: 50px;
+  color: #6b6052;
+  font-size: clamp(28px, 5vw, 52px);
+  font-family: 'Pacifico', cursive;
+  text-shadow: 3px 3px 0 rgba(196, 39, 12, 0.18);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.TitleText:hover {
+  background: hsl(36, 13%, 94%);
+  transform: scale(1.03);
+}
+
+.TitleCard img {
+  display: block;
+  margin: 16px auto;
+  border-radius: var(--radius);
+}
+
+#CompanyLogo { margin-top: 24px; max-width: 40%; }
+
+#InternName {
+  max-width: 10%;
+  padding: 6px 12px;
+  border-radius: 800px;
+}
+
+.Content {
+  background: #a8d5c2;
+  padding: 28px 36px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(85%, 900px);
+  font-family: 'Merriweather', serif;
+}
+
+.Content h2 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(18px, 3vw, 26px);
+  margin-bottom: 12px;
+  color: #2e5247;
+}
+
+.Content p { margin-bottom: 10px; font-size: 15px; }
+
+.Content ol {
+  padding-left: 22px;
+  margin-top: 14px;
+}
+
+.Content ol li { margin-bottom: 20px; }
+
+.Content h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 20px;
+  color: #2e5247;
+  margin-bottom: 6px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--tan);
+  color: white;
+  padding: 9px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.25s, transform 0.2s;
+  margin-top: 6px;
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+.Audio {
+  background: #eeeae7;
+  padding: 24px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: min(85%, 900px);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.Audio h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  margin-bottom: 14px;
+  color: var(--text);
+  letter-spacing: 0.1em;
+}
+
+.Audio audio { width: 100%; max-width: 500px; }
+
+.Feedback {
+  background: var(--bisque);
+  padding: 24px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(85%, 900px);
+  font-family: 'Caveat', cursive; 
+}
+
+.Feedback label {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.Feedback input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  font-size: 20px;
+  font-family: 'Caveat', cursive;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.Feedback input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
