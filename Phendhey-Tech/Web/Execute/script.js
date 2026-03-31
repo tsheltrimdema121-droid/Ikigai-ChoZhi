@@ -2,6 +2,15 @@
 
 let visitorName = '';
 
+// ── Show home section (tabs) ───────────────────────────────────────────────
+function showHomeSection(sectionId, btn) {
+  document.querySelectorAll('.home-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.home-tab').forEach(b => b.classList.remove('active'));
+  const target = document.getElementById('home-' + sectionId);
+  if (target) target.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
 // ── Google Sheets logging ──────────────────────────────────────────────────
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbys3-Yefk8RbNEMZFzBJ9xupG4WMWhitYAw1EfoJnQwDEI-miDb9jNC2bthJtGbLGib2A/exec';
 
@@ -57,7 +66,7 @@ function submitName() {
   // Show greeting bar
   const bar = document.getElementById('greeting-bar');
   document.getElementById('greeting-text').innerHTML =
-    `${greet}, <strong>${name}</strong> — welcome to the Bhutan Lifestyle &amp; Wellbeing Study 2026.`;
+    `${greet}, <strong>${name}</strong> — welcome to SomPel Tech website 2026.`;
 
   // Transition screens
   document.getElementById('name-screen').style.display = 'none';
@@ -98,18 +107,25 @@ function setGreetingCards(name, greet) {
   });
 }
 
+// ── Pages that are live (others show "Coming Soon") ───────────────────────
+const LIVE_PAGES = ['home'];
+
 // ── Navigation ─────────────────────────────────────────────────────────────
 function navigateTo(pageId, btn) {
-  // Deactivate all pages
+  // If page isn't live yet, show the coming-soon overlay
+  if (!LIVE_PAGES.includes(pageId)) {
+    showComingSoon(pageId);
+    return;
+  }
+
+  // Deactivate all pages & nav items
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  // Deactivate all nav items
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
   // Activate target page
   const target = document.getElementById('page-' + pageId);
   if (target) {
     target.classList.add('active');
-    // Re-trigger animation
     target.style.animation = 'none';
     target.offsetHeight; // reflow
     target.style.animation = '';
@@ -124,6 +140,47 @@ function navigateTo(pageId, btn) {
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Coming Soon overlay ────────────────────────────────────────────────────
+const PAGE_LABELS = {
+  about:    { label: 'About This Project', icon: 'ℹ️' },
+  findings: { label: 'Key Findings',        icon: '📊' },
+  market:   { label: 'Market Readiness',    icon: '📱' },
+  tableau:  { label: 'Tableau Story',       icon: '📐' },
+  report:   { label: 'Report',              icon: '📄' },
+};
+
+function showComingSoon(pageId) {
+  // Remove any existing overlay
+  const old = document.getElementById('coming-soon-overlay');
+  if (old) old.remove();
+
+  const info = PAGE_LABELS[pageId] || { label: pageId, icon: '🔒' };
+
+  const overlay = document.createElement('div');
+  overlay.id = 'coming-soon-overlay';
+  overlay.innerHTML = `
+    <div class="cs-backdrop" onclick="closeComingSoon()"></div>
+    <div class="cs-card">
+      <div class="cs-icon">${info.icon}</div>
+      <div class="cs-tag">Coming Soon</div>
+      <h2 class="cs-title">${info.label}</h2>
+      <p class="cs-text">This section is being prepared and will be available soon. Stay tuned!</p>
+      <button class="cs-btn" onclick="closeComingSoon()">← Back to Home</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // Trigger animation
+  requestAnimationFrame(() => overlay.classList.add('cs-visible'));
+}
+
+function closeComingSoon() {
+  const overlay = document.getElementById('coming-soon-overlay');
+  if (!overlay) return;
+  overlay.classList.remove('cs-visible');
+  setTimeout(() => overlay.remove(), 280);
 }
 
 // ── Market bar animation ───────────────────────────────────────────────────

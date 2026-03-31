@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bhutan Lifestyle Study</title>
+  <title>SomPel Tech</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -32,8 +32,8 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-top">
         <div class="sidebar-logo">
-          <div class="sidebar-logo-mark">BLS</div>
-          <div class="sidebar-logo-text">Bhutan Lifestyle<br>Study</div>
+          <div class="sidebar-logo-mark">SPT</div>
+          <div class="sidebar-logo-text">SomPel<br>Tech</div>
         </div>
         <div class="sidebar-user" id="sidebar-user">
           <div class="sidebar-avatar" id="sidebar-avatar">?</div>
@@ -100,20 +100,203 @@
       <!-- ── PAGE: HOME ── -->
       <div class="page active" id="page-home">
         <div class="page-inner">
-          <div class="page-eyebrow">Project Overview</div>
-          <h1 class="page-title">Urban–Rural <em>Lifestyle</em> Differences in Bhutan</h1>
-          <div class="page-divider"></div>
-          <p class="page-bio">
-            I am Sonam Peldon, Gedu College of Business Studies intern and data practitioner
-            at Data Scientists Pvt. Ltd., exploring how lifestyle habits affect health and wellbeing.
-            This project examines how sleep, work, and screen habits differ between urban and rural
-            residents and how these affect sleep quality and energy levels.
-          </p>
 
+          <div class="page-eyebrow">SomPel Tech · Founded 2026</div>
+          <h1 class="page-title">About <em>SomPel Tech</em></h1>
 
+          <!-- Pill tabs -->
+          <div class="home-tabs">
+            <button class="home-tab active" onclick="showHomeSection('about', this)">
+              <span class="tab-icon">🏢</span> About
+            </button>
+            <button class="home-tab" onclick="showHomeSection('vision', this)">
+              <span class="tab-icon">🔭</span> Vision
+            </button>
+            <button class="home-tab" onclick="showHomeSection('mission', this)">
+              <span class="tab-icon">🎯</span> Mission
+            </button>
+            <button class="home-tab" onclick="showHomeSection('objectives', this)">
+              <span class="tab-icon">📋</span> Objectives
+            </button>
+            <button class="home-tab" onclick="showHomeSection('values', this)">
+              <span class="tab-icon">✨</span> Values
+            </button>
+          </div>
+
+          <!-- ── ABOUT ── -->
+          <div id="home-about" class="home-section active">
+            <div class="section-panel section-panel--about">
+              <div class="sp-header">
+                <div class="sp-badge sp-badge--amber">Origin Story</div>
+              </div>
+              <p class="sp-lead">
+                SomPel Tech was founded during a six-month internship at Bhutan Data Scientists Pvt. Ltd., where I was encouraged to create a company identity as part of a project.
+              </p>
+              <p class="sp-body">
+                At first, I proposed the name <strong>Phendhey Tech</strong>, inspired by the Dzongkha word <em>"Phendhey"</em> — meaning wellness — combined with technology. However, I later chose a more personal and meaningful name: <strong>SomPel Tech</strong>.
+              </p>
+
+              <div class="name-meaning-row">
+                <div class="name-meaning-card name-meaning--som">
+                  <div class="nm-letter">Som</div>
+                  <div class="nm-label">from Sonam</div>
+                  <div class="nm-desc">Merit · Virtue · Good karma · Good deeds</div>
+                </div>
+                <div class="nm-plus">+</div>
+                <div class="name-meaning-card name-meaning--pel">
+                  <div class="nm-letter">Pel</div>
+                  <div class="nm-label">from Peldon</div>
+                  <div class="nm-desc">Glorious · Prosperous · Blessed with fortune</div>
+                </div>
+                <div class="nm-plus">=</div>
+                <div class="name-meaning-card name-meaning--result">
+                  <div class="nm-letter">SomPel</div>
+                  <div class="nm-label">Tech</div>
+                  <div class="nm-desc">Purpose · Positivity · Meaningful impact</div>
+                </div>
+              </div>
+
+              <p class="sp-body">
+                As the sole founder, SomPel Tech reflects my vision of using technology to create solutions that contribute to well-being, growth, and innovation in society.
+              </p>
+            </div>
+          </div>
+
+          <!-- ── VISION ── -->
+          <div id="home-vision" class="home-section">
+            <div class="section-panel section-panel--vision">
+              <div class="sp-header">
+                <div class="sp-badge sp-badge--sky">Vision Statement</div>
+              </div>
+              <div class="vision-orb">🔭</div>
+              <blockquote class="vision-quote">
+                To create a healthier and more balanced society in Bhutan by transforming how people understand and manage sleep, lifestyle, and wellbeing through data-driven technology.
+              </blockquote>
+              <div class="vision-pillars">
+                <div class="vp-pill vp-pill--health">Healthier Society</div>
+                <div class="vp-pill vp-pill--balance">Balance &amp; Wellbeing</div>
+                <div class="vp-pill vp-pill--data">Data-Driven</div>
+                <div class="vp-pill vp-pill--bhutan">For Bhutan</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── MISSION ── -->
+          <div id="home-mission" class="home-section">
+            <div class="section-panel section-panel--mission">
+              <div class="sp-header">
+                <div class="sp-badge sp-badge--green">Mission Statement</div>
+              </div>
+              <div class="mission-icon-wrap">🎯</div>
+              <blockquote class="mission-quote">
+                To develop accessible and user-friendly digital solutions that analyze lifestyle habits and provide personalized insights to improve sleep quality and daily energy.
+              </blockquote>
+              <div class="mission-focus-row">
+                <div class="mf-item">
+                  <div class="mf-icon">📱</div>
+                  <div class="mf-text">Accessible &amp; User-Friendly</div>
+                </div>
+                <div class="mf-item">
+                  <div class="mf-icon">🔍</div>
+                  <div class="mf-text">Lifestyle Analysis</div>
+                </div>
+                <div class="mf-item">
+                  <div class="mf-icon">💡</div>
+                  <div class="mf-text">Personalized Insights</div>
+                </div>
+                <div class="mf-item">
+                  <div class="mf-icon">😴</div>
+                  <div class="mf-text">Better Sleep &amp; Energy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── OBJECTIVES ── -->
+          <div id="home-objectives" class="home-section">
+            <div class="section-panel section-panel--objectives">
+              <div class="sp-header">
+                <div class="sp-badge sp-badge--orange">Objectives</div>
+              </div>
+              <p class="sp-lead">To develop data-driven solutions that improve sleep quality and daily energy among urban and rural populations in Bhutan.</p>
+              <div class="objectives-list">
+                <div class="obj-item">
+                  <div class="obj-check">✔</div>
+                  <div class="obj-text">
+                    <strong>Track &amp; Analyze</strong>
+                    Design tools that track and analyze lifestyle patterns — screen time, sleep, and work habits.
+                  </div>
+                </div>
+                <div class="obj-item">
+                  <div class="obj-check">✔</div>
+                  <div class="obj-text">
+                    <strong>Personalized Recommendations</strong>
+                    Provide personalized and actionable recommendations for improving sleep health.
+                  </div>
+                </div>
+                <div class="obj-item">
+                  <div class="obj-check">✔</div>
+                  <div class="obj-text">
+                    <strong>Generate Insights</strong>
+                    Generate insights that support individuals, organizations, and policymakers.
+                  </div>
+                </div>
+                <div class="obj-item">
+                  <div class="obj-check">✔</div>
+                  <div class="obj-text">
+                    <strong>Promote Awareness</strong>
+                    Promote awareness of healthy digital and sleep habits through technology.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── VALUES ── -->
+          <div id="home-values" class="home-section">
+            <div class="section-panel section-panel--values">
+              <div class="sp-header">
+                <div class="sp-badge sp-badge--purple">Core Values</div>
+              </div>
+              <div class="wisp-banner">
+                <span class="wisp-letter wisp-w">W</span>
+                <span class="wisp-letter wisp-i">I</span>
+                <span class="wisp-letter wisp-s">S</span>
+                <span class="wisp-letter wisp-p">P</span>
+                <span class="wisp-word">Wellbeing · Insight · Purpose · Discipline</span>
+              </div>
+              <div class="values-grid">
+                <div class="value-card value-card--w">
+                  <div class="vc-icon">🌿</div>
+                  <div class="vc-letter">W</div>
+                  <h3 class="vc-title">Wellbeing</h3>
+                  <p class="vc-desc">Prioritizing physical and mental health in all solutions we build.</p>
+                </div>
+                <div class="value-card value-card--i">
+                  <div class="vc-icon">🔎</div>
+                  <div class="vc-letter">I</div>
+                  <h3 class="vc-title">Insight</h3>
+                  <p class="vc-desc">Using data to generate meaningful and useful understanding.</p>
+                </div>
+                <div class="value-card value-card--s">
+                  <div class="vc-icon">🌟</div>
+                  <div class="vc-letter">S</div>
+                  <h3 class="vc-title">Purpose</h3>
+                  <p class="vc-desc">Creating technology with clear intention and real social impact.</p>
+                </div>
+                <div class="value-card value-card--p">
+                  <div class="vc-icon">⚙️</div>
+                  <div class="vc-letter">D</div>
+                  <h3 class="vc-title">Discipline</h3>
+                  <p class="vc-desc">Maintaining consistency, focus, and responsibility in all work.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
+      <!-- ── END PAGE: HOME ── -->
 
       <!-- ── PAGE: ABOUT ── -->
       <div class="page" id="page-about">
@@ -130,10 +313,10 @@
           <div class="content-section">
             <h2 class="section-heading">The Research Question</h2>
             <p class="section-text">
-              Bhutan is undergoing rapid urbanisation. As more people move into towns and cities, 
-              their daily habits — how long they sleep, how many hours they work, how much time 
-              they spend on screens — are shifting in ways that may significantly affect their 
-              health and wellbeing. But how different are these habits between urban and rural 
+              Bhutan is undergoing rapid urbanisation. As more people move into towns and cities,
+              their daily habits — how long they sleep, how many hours they work, how much time
+              they spend on screens — are shifting in ways that may significantly affect their
+              health and wellbeing. But how different are these habits between urban and rural
               populations? And what do those differences mean for sleep quality and energy levels?
             </p>
             <p class="section-text">
@@ -144,9 +327,9 @@
           <div class="content-section">
             <h2 class="section-heading">Who Conducted It</h2>
             <p class="section-text">
-              This study was conducted by <strong>Sonam Peldon</strong>, an intern at Gedu College 
-              of Business Studies and data practitioner at Data Scientists Pvt. Ltd. The research 
-              combines survey data collection with statistical analysis to uncover meaningful 
+              This study was conducted by <strong>Sonam Peldon</strong>, an intern at Gedu College
+              of Business Studies and data practitioner at Data Scientists Pvt. Ltd. The research
+              combines survey data collection with statistical analysis to uncover meaningful
               patterns across Bhutan's urban and rural populations.
             </p>
           </div>
@@ -154,10 +337,10 @@
           <div class="content-section">
             <h2 class="section-heading">How Data Was Collected</h2>
             <p class="section-text">
-              A structured survey was distributed to <strong>366 respondents</strong> — 238 from 
-              urban areas and 120 from rural areas across Bhutan. Participants were asked about 
-              their sleep duration and quality, work hours, screen time habits, energy levels, 
-              and interest in sleep support tools. The data was then cleaned, analysed, and 
+              A structured survey was distributed to <strong>366 respondents</strong> — 238 from
+              urban areas and 120 from rural areas across Bhutan. Participants were asked about
+              their sleep duration and quality, work hours, screen time habits, energy levels,
+              and interest in sleep support tools. The data was then cleaned, analysed, and
               visualised to draw the insights presented in this study.
             </p>
           </div>
@@ -165,10 +348,10 @@
           <div class="content-section">
             <h2 class="section-heading">Why It Matters</h2>
             <p class="section-text">
-              Sleep and lifestyle health are often treated as personal issues — but when patterns 
-              emerge across entire populations, they become public health questions. Understanding 
-              how urban and rural Bhutanese residents differ in their habits is the first step 
-              toward designing tools, policies, and programmes that can genuinely improve wellbeing 
+              Sleep and lifestyle health are often treated as personal issues — but when patterns
+              emerge across entire populations, they become public health questions. Understanding
+              how urban and rural Bhutanese residents differ in their habits is the first step
+              toward designing tools, policies, and programmes that can genuinely improve wellbeing
               at scale.
             </p>
           </div>
@@ -189,6 +372,7 @@
           </div>
         </div>
       </div>
+      <!-- ── END PAGE: ABOUT ── -->
 
       <!-- ── PAGE: FINDINGS ── -->
       <div class="page" id="page-findings">
@@ -223,47 +407,52 @@
           <div class="findings-grid">
             <div class="finding-card" id="finding-1">
               <div class="finding-number">01</div>
-               <div class="stats-row">
-            <div class="stat-card">
-              <span class="stat-num">366</span>
-              <span class="stat-lbl">Respondents</span>
-            </div>
-              <div class="stat-card">
-                <span class="stat-num">238</span>
-                <span class="stat-lbl">Urban</span>
+              <div class="stats-row">
+                <div class="stat-card">
+                  <span class="stat-num">366</span>
+                  <span class="stat-lbl">Respondents</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-num">238</span>
+                  <span class="stat-lbl">Urban</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-num">120</span>
+                  <span class="stat-lbl">Rural</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-num">2026</span>
+                  <span class="stat-lbl">Study Year</span>
+                </div>
               </div>
-              <div class="stat-card">
-                <span class="stat-num">120</span>
-                <span class="stat-lbl">Rural</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-num">2026</span>
-                <span class="stat-lbl">Study Year</span>
-            </div>
-          </div>
               <h3 class="finding-title">Respondent Distribution</h3>
               <p class="finding-text">238 urban respondents (65%) and 120 rural respondents (33%) participated, with 8 unclassified. This urban majority reflects Bhutan's growing urbanisation trend.</p>
             </div>
+
             <div class="finding-card" id="finding-2">
               <div class="finding-number">02</div>
               <h3 class="finding-title">Core Insights</h3>
               <p class="finding-text">Urban residents reported shorter sleep durations and higher screen time compared to rural counterparts. Rural residents showed more consistent sleep schedules tied to natural light cycles.</p>
             </div>
+
             <div class="finding-card" id="finding-3">
               <div class="finding-number">03</div>
               <h3 class="finding-title">Correlation Insights</h3>
               <p class="finding-text">Strong correlation found between screen time before bed and reduced sleep quality. Work hours beyond 8 per day were associated with lower energy levels the following morning.</p>
             </div>
+
             <div class="finding-card" id="finding-4">
               <div class="finding-number">04</div>
               <h3 class="finding-title">Habits Affecting Sleep Quality</h3>
               <p class="finding-text">Late-night screen use, irregular bedtime routines, and high caffeine consumption were the top three habits negatively impacting sleep quality across both groups.</p>
             </div>
+
             <div class="finding-card" id="finding-5">
               <div class="finding-number">05</div>
               <h3 class="finding-title">Preferences for Sleep Support Tools</h3>
               <p class="finding-text">Sleep tracking apps were the most preferred tool, favoured for their convenience and low cost. Respondents prioritised simple, phone-based solutions over complex wearables.</p>
             </div>
+
             <div class="finding-card" id="finding-6">
               <div class="finding-number">06</div>
               <h3 class="finding-title">Future Interest in Sleep Tools</h3>
@@ -276,8 +465,10 @@
             <h3 class="finding-title">Key Takeaways</h3>
             <p class="finding-text">Urban–rural differences in Bhutan are real and measurable. Lifestyle habits significantly affect sleep quality and energy. The population is ready for digital wellness tools — particularly simple, affordable, phone-based apps. Awareness and access remain the key barriers to adoption, especially in rural areas.</p>
           </div>
+
         </div>
       </div>
+      <!-- ── END PAGE: FINDINGS ── -->
 
       <!-- ── PAGE: MARKET READINESS ── -->
       <div class="page" id="page-market">
@@ -297,14 +488,14 @@
               Absolutely — and the numbers make a strong case.
             </p>
             <p class="section-text">
-              When respondents were asked whether they would use a sleep or wellness app if one 
-              were available, <strong>58.42% said yes outright</strong>. Another <strong>36.6% 
-              said maybe</strong> — meaning they're not opposed, just not fully decided yet. 
+              When respondents were asked whether they would use a sleep or wellness app if one
+              were available, <strong>58.42% said yes outright</strong>. Another <strong>36.6%
+              said maybe</strong> — meaning they're not opposed, just not fully decided yet.
               Only <strong>4.96% said no</strong>.
             </p>
             <p class="section-text">
-              Put together, that's over <strong>95% of 366 respondents</strong> who are either 
-              open to or actively interested in a wellness app. For a market where digital health 
+              Put together, that's over <strong>95% of 366 respondents</strong> who are either
+              open to or actively interested in a wellness app. For a market where digital health
               tools are still finding their footing, that's a remarkable signal.
             </p>
           </div>
@@ -338,9 +529,9 @@
           <div class="content-section">
             <h2 class="section-heading">How to read the "maybe" group</h2>
             <p class="section-text">
-              The 36.6% who said "maybe" are arguably the most interesting segment. They're not 
-              skeptics — they're undecided. That usually comes down to three things: not knowing 
-              enough about what the tool does, uncertainty about cost, or simply never having 
+              The 36.6% who said "maybe" are arguably the most interesting segment. They're not
+              skeptics — they're undecided. That usually comes down to three things: not knowing
+              enough about what the tool does, uncertainty about cost, or simply never having
               thought about sleep as something worth tracking.
             </p>
             <p class="section-text">
@@ -351,14 +542,14 @@
           <div class="content-section">
             <h2 class="section-heading">What tool do people actually want?</h2>
             <p class="section-text">
-              Out of all the options presented, respondents pointed most clearly toward one thing: 
+              Out of all the options presented, respondents pointed most clearly toward one thing:
               a <strong>sleep tracking app</strong>.
             </p>
             <p class="section-text">
-              That's a telling choice. A sleep tracking app lives on a phone most people already 
-              own — no extra device to buy, no subscription to commit to, no steep learning curve. 
-              It's the lowest-barrier, highest-convenience option available. Respondents aren't 
-              asking for something complicated or expensive. They're asking for something simple 
+              That's a telling choice. A sleep tracking app lives on a phone most people already
+              own — no extra device to buy, no subscription to commit to, no steep learning curve.
+              It's the lowest-barrier, highest-convenience option available. Respondents aren't
+              asking for something complicated or expensive. They're asking for something simple
               that fits into the life they already have.
             </p>
           </div>
@@ -366,7 +557,7 @@
           <div class="highlight-box">
             <div class="highlight-icon">💡</div>
             <div>
-              <strong>Preferred tool:</strong> Sleep tracking app — chosen for convenience, 
+              <strong>Preferred tool:</strong> Sleep tracking app — chosen for convenience,
               low cost, and ease of use on existing smartphones.
             </div>
           </div>
@@ -374,14 +565,14 @@
           <div class="content-section">
             <h2 class="section-heading">The honest picture</h2>
             <p class="section-text">
-              There are real challenges worth acknowledging. Smartphone and internet access is 
-              still uneven across Bhutan, particularly in rural areas. Awareness of sleep health 
-              as something worth actively managing is still developing. And affordability will 
+              There are real challenges worth acknowledging. Smartphone and internet access is
+              still uneven across Bhutan, particularly in rural areas. Awareness of sleep health
+              as something worth actively managing is still developing. And affordability will
               matter — any tool priced out of reach simply won't get used.
             </p>
             <p class="section-text">
-              But none of these are dealbreakers. They're design constraints — they tell 
-              developers and policymakers <em>how</em> to build and distribute these tools, 
+              But none of these are dealbreakers. They're design constraints — they tell
+              developers and policymakers <em>how</em> to build and distribute these tools,
               not <em>whether</em> to.
             </p>
           </div>
@@ -389,14 +580,15 @@
           <div class="content-section">
             <h2 class="section-heading">Bottom line</h2>
             <p class="section-text" id="market-bottom-line">
-              The data speaks clearly. With 58.42% ready to say yes and another 36.6% saying 
-              maybe, Bhutan's wellness market is early-stage but unmistakably real. People know 
-              what they want — something simple, on their phone, that helps them sleep better. 
+              The data speaks clearly. With 58.42% ready to say yes and another 36.6% saying
+              maybe, Bhutan's wellness market is early-stage but unmistakably real. People know
+              what they want — something simple, on their phone, that helps them sleep better.
               The demand is there. It just needs the right product to meet it.
             </p>
           </div>
         </div>
       </div>
+      <!-- ── END PAGE: MARKET READINESS ── -->
 
       <!-- ── PAGE: TABLEAU STORY ── -->
       <div class="page" id="page-tableau">
@@ -405,8 +597,8 @@
           <h1 class="page-title">Interactive <em>Data Visualisation</em></h1>
           <div class="page-divider"></div>
           <p class="section-text" style="margin-bottom:32px;">
-            The Tableau story provides an interactive, visual walkthrough of all key findings 
-            from this study. Explore the data, filter by urban or rural, and see the patterns 
+            The Tableau story provides an interactive, visual walkthrough of all key findings
+            from this study. Explore the data, filter by urban or rural, and see the patterns
             for yourself.
           </p>
           <div class="tableau-placeholder">
@@ -423,6 +615,7 @@
           </div>
         </div>
       </div>
+      <!-- ── END PAGE: TABLEAU STORY ── -->
 
       <!-- ── PAGE: REPORT ── -->
       <div class="page" id="page-report">
@@ -431,7 +624,7 @@
           <h1 class="page-title">Research <em>Report</em></h1>
           <div class="page-divider"></div>
           <p class="section-text" style="margin-bottom:32px;">
-            The complete research report covers the methodology, data analysis, findings, 
+            The complete research report covers the methodology, data analysis, findings,
             and recommendations from the Bhutan Lifestyle &amp; Wellbeing Study 2026.
           </p>
           <div class="report-options">
@@ -462,6 +655,7 @@
           </div>
         </div>
       </div>
+      <!-- ── END PAGE: REPORT ── -->
 
     </main>
   </div>

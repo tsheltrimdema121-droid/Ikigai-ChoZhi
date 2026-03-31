@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quiz</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="text-box">
+
+<h2>Career Quiz</h2>
+
+<form action="/submit" method="POST">
+
+<p>1. What do you enjoy?</p>
+<input type="text" name="q1">
+
+<p>2. Favorite subject?</p>
+<input type="text" name="q2">
+
+<p>3. Work style?</p>
+<input type="text" name="q3">
+
+<p>4. Problem solving?</p>
+<input type="text" name="q4">
+
+<p>5. Tools you like?</p>
+<input type="text" name="q5">
+
+<p>6. Work interest?</p>
+<input type="text" name="q6">
+
+<p>7. Strength?</p>
+<input type="text" name="q7">
+
+<p>8. Future goal?</p>
+<input type="text" name="q8">
+
+<p>9. Task preference?</p>
+<input type="text" name="q9">
+
+<p>10. Daily activity?</p>
+<input type="text" name="q10">
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>
