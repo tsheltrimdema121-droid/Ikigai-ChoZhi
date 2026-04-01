@@ -4,27 +4,35 @@ import os
 
 app = Flask(__name__)
 
+# File path (important for Railway)
+file_path = os.path.join(os.getcwd(), 'data.csv')
+
 # Create CSV if not exists
-if not os.path.exists('data.csv'):
-    with open('data.csv', 'w', newline='') as file:
+if not os.path.exists(file_path):
+    with open(file_path, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','score'])
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
+
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html')
+
 
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
+
 @app.route('/report')
 def report():
-    return render_template('report.html')   # ✅ CONNECTED
+    return render_template('report.html')
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -47,7 +55,7 @@ def submit():
                 score -= 1
 
     # Save data
-    with open('data.csv', 'a', newline='') as file:
+    with open(file_path, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(answers + [score])
 
@@ -58,5 +66,8 @@ def submit():
 
     return render_template('result.html', result=result)
 
+
+# 🚀 IMPORTANT FOR RAILWAY
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
